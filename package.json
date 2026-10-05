@@ -17,7 +17,8 @@
     "build": "tsc -p tsconfig.json",
     "test": "node --test ./tests/*.test.mjs",
     "demo": "node ./examples/basic/build.mjs",
-    "check": "npm run clean && npm run build && npm test && npm run demo && npm run clean"
+    "validate:consumers": "node ./examples/validation/build.mjs",
+    "check": "npm run clean && npm run build && npm test && npm run demo && npm run validate:consumers && npm run clean"
   },
   "devDependencies": {
     "style-dictionary": "5.5.5",

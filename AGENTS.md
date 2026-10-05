@@ -16,7 +16,8 @@ Rules:
 - Treat `config/pfx-interface.default.json` as the machine-readable declaration of the supported conformance surface.
 - Treat `config/pfx-modes.v0.1.json` as the source of truth for mode axes, defaults, and application order; do not invent combined theme files.
 - Treat `config/pfx-accessibility.v0.1.json` as the machine policy for accessibility defaults and verification boundaries; never claim project conformance from token values alone.
+- Treat `examples/validation/` as consumer evidence, not as source-of-truth foundation data.
+- Do not promote a Design Contract unless repeated usage is backed by materially different consumers and recorded evidence.
 - Do not claim full DTCG conformance unless executable tests cover the claimed behavior.
-- Do not create `foundations` or `contracts` modules until repeated cross-project evidence justifies them.
 - No GUI, React, Vue, Next.js, routing, data fetching, authentication, or business logic belongs in the core.
 - Before completion, run `npm run check`.

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PFx Dashboard Validation</title>
+  <link rel="stylesheet" href="./generated/tokens.css">
+  <link rel="stylesheet" href="./project.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <strong>Operations</strong>
+      <nav aria-label="Primary">
+        <a class="nav-item" aria-current="page" href="#">Overview</a>
+        <a class="nav-item" href="#">Inventory</a>
+        <a class="nav-item" href="#">Movements</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><small>Dashboard</small><h1>Inventory status</h1></div>
+        <button class="filter" type="button">Filter</button>
+      </header>
+      <section class="metrics">
+        <article class="metric"><small>Products</small><strong>5,000</strong></article>
+        <article class="metric"><small>Movements</small><strong>30,000</strong></article>
+        <article class="metric"><small>Low stock</small><strong>18</strong></article>
+      </section>
+      <section class="table-shell">
+        <table>
+          <thead><tr><th>Product</th><th>Size</th><th>Stock</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Road Touring</td><td>205/55 R16</td><td>24</td><td><span class="status">Available</span></td></tr>
+            <tr><td>Urban Grip</td><td>195/65 R15</td><td>7</td><td><span class="status">Low</span></td></tr>
+            <tr><td>Sport Max</td><td>225/45 R17</td><td>16</td><td><span class="status">Available</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -9,14 +9,15 @@ When using or modifying this repository:
 3. When the task involves visual foundations, read `config/pfx-foundations.v0.1.json` and `docs/FOUNDATIONS.md`.
 4. When the task involves themes, accessibility preferences, density, or motion, read `config/pfx-modes.v0.1.json` and `docs/MODES.md`.
 5. When the task involves interaction, focus, target sizing, reduced motion, responsive behavior, or accessibility, read `config/pfx-accessibility.v0.1.json` and `docs/ACCESSIBILITY.md`.
-6. Read only the relevant sections of `docs/STANDARD.md` and `docs/ARCHITECTURE.md`.
-7. For naming, follow `docs/NAMING-INTEGRATION.md` and the canonical `pfxamd/pfx-naming-system` when accessible.
-8. Treat schemas, executable validation, resolver behavior, and tests as stronger than prose when they disagree.
-9. Keep token source data DTCG-aligned and machine-readable.
-10. Do not make project code depend on compiler internals or vendor tooling.
-11. Do not add a token family, foundation, contract, or abstraction only because one project needs it. Promote repeated stable patterns.
-12. Keep ordinary functions, local variables, and domain names natural. Use PFx signatures only where shared PFx architecture owns the construct.
-13. Run `npm run check` before considering a change complete.
+6. When considering a reusable Design Contract, read `docs/CONSUMER-VALIDATION.md` and `examples/validation/observations.json` before promoting anything.
+7. Read only the relevant sections of `docs/STANDARD.md` and `docs/ARCHITECTURE.md`.
+8. For naming, follow `docs/NAMING-INTEGRATION.md` and the canonical `pfxamd/pfx-naming-system` when accessible.
+9. Treat schemas, executable validation, resolver behavior, and tests as stronger than prose when they disagree.
+10. Keep token source data DTCG-aligned and machine-readable.
+11. Do not make project code depend on compiler internals or vendor tooling.
+12. Do not add a token family, foundation, contract, or abstraction only because one project needs it. Promote repeated stable patterns.
+13. Keep ordinary functions, local variables, and domain names natural. Use PFx signatures only where shared PFx architecture owns the construct.
+14. Run `npm run check` before considering a change complete.
 
 Priority:
 
@@ -34,6 +35,7 @@ Priority:
 - active foundation tokens → `config/pfx-foundations.v0.1.json`, `tokens/primitive/`, `tokens/semantic/`, `docs/FOUNDATIONS.md`
 - mode selection/composition → `config/pfx-modes.v0.1.json`, `tokens/modes/`, `src/modes/`, `docs/MODES.md`
 - accessibility policy → `config/pfx-accessibility.v0.1.json`, foundation tokens, `docs/ACCESSIBILITY.md`
-- future reusable element contract → add a contract only after the promotion gate passes
+- real consumer evidence → `examples/validation/`, `tests/consumer-validation.test.mjs`, `docs/CONSUMER-VALIDATION.md`
+- future reusable element contract → promote only after the governance gate passes with cross-project evidence
 
 Do not create a GUI unless explicitly requested in a future project decision.

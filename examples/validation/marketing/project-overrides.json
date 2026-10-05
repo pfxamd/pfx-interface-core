@@ -1,0 +1,42 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "color": {
+    "surface": {
+      "subtle": {
+        "$value": "{color.palette.brand.50}"
+      }
+    },
+    "action": {
+      "primary": {
+        "$value": "{color.palette.brand.500}"
+      },
+      "primary-hover": {
+        "$value": "{color.palette.brand.700}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$value": "{color.palette.brand.500}"
+      }
+    }
+  },
+  "font": {
+    "heading": {
+      "family": {
+        "$value": "{font.family.display}"
+      }
+    }
+  },
+  "radius": {
+    "control": {
+      "md": {
+        "$value": "{radius.scale.full}"
+      }
+    },
+    "surface": {
+      "prominent": {
+        "$value": "{radius.scale.xl}"
+      }
+    }
+  }
+}

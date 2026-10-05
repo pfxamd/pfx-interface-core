@@ -1,0 +1,15 @@
+{
+  "id": "marketing",
+  "name": "PFx Validation — Marketing Site",
+  "intent": "Expressive service marketing site with generous spacing and visible brand identity.",
+  "primitives": "examples/validation/marketing/project-primitives.json",
+  "overrides": "examples/validation/marketing/project-overrides.json",
+  "stylesheet": "examples/validation/marketing/project.css",
+  "entry": "examples/validation/marketing/index.html",
+  "modeSelection": {
+    "colorScheme": "light",
+    "contrast": "normal",
+    "density": "comfortable",
+    "motion": "full"
+  }
+}

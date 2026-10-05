@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "color": {
+    "action": {
+      "primary": {
+        "$value": "{color.palette.brand.400}"
+      },
+      "primary-hover": {
+        "$value": "{color.palette.brand.600}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$value": "{color.palette.brand.400}"
+      }
+    }
+  },
+  "radius": {
+    "control": {
+      "md": {
+        "$value": "{radius.scale.sm}"
+      }
+    },
+    "surface": {
+      "default": {
+        "$value": "{radius.scale.sm}"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "dashboard",
+  "name": "PFx Validation — Dense Dashboard",
+  "intent": "Dense operational dashboard with dark scheme, compact density and reduced motion.",
+  "primitives": "examples/validation/dashboard/project-primitives.json",
+  "overrides": "examples/validation/dashboard/project-overrides.json",
+  "stylesheet": "examples/validation/dashboard/project.css",
+  "entry": "examples/validation/dashboard/index.html",
+  "modeSelection": {
+    "colorScheme": "dark",
+    "contrast": "normal",
+    "density": "compact",
+    "motion": "reduced"
+  }
+}

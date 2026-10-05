@@ -4,6 +4,15 @@ All notable changes to PFx Interface Core are recorded here.
 
 ## Unreleased
 
+Cross-project consumer validation:
+
+- Added two materially different static consumers: an expressive marketing site and a dense operational dashboard.
+- Both consumers compile through the same PFx public API and Style Dictionary adapter without forking core token files.
+- Added project-level primitive identity, semantic overrides, and distinct mode compositions.
+- Added verification that every consumed `--pfx-*` CSS variable is actually emitted by the core.
+- Added machine-readable contract-candidate evidence for interactive controls, focus rings, and elevated surfaces.
+- Kept Design Contracts deferred; validation produces candidates rather than automatic promotion.
+
 Style Dictionary integration:
 
 - Added Style Dictionary 5.5.5 as the pinned production token transformation engine.

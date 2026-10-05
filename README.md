@@ -6,7 +6,7 @@ It is not a UI kit and does not impose a visual identity. It defines reusable to
 
 ## Status
 
-Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`, `motion`, `radius`, `border`, `shadow`, `sizing`, `z-index`, `layout`), composable PFx Modes v0.1, a machine-readable Accessibility Foundation v0.1, and a production Style Dictionary compiler adapter. Not yet a stable release and not yet claiming complete DTCG conformance.
+Hardened bootstrap with PFx Foundations v0.1, composable PFx Modes v0.1, Accessibility Foundation v0.1, a production Style Dictionary compiler adapter, and two materially different consumer validations. Not yet a stable release and not yet claiming complete DTCG conformance.
 
 ## Core flow
 
@@ -26,6 +26,15 @@ Style Dictionary adapter
 CSS / machine outputs
 ```
 
+## Consumer validation
+
+The core is exercised by two independent static consumers under `examples/validation/`:
+
+- expressive marketing site: light, comfortable, full motion, branded identity
+- dense dashboard: dark, compact, reduced motion, different branded identity
+
+Both compile through the same PFx public API without modifying core token files. Their generated outputs are excluded from source control and rebuilt during verification.
+
 ## Current DTCG surface
 
 The core targets DTCG 2025.10 and currently tests `$root`, whole-token aliases, JSON Pointer/property references, `$extends`, type inheritance, circular-reference detection, and strict primitive validation. The exact supported surface is machine-readable in `config/pfx-interface.default.json`.
@@ -38,7 +47,7 @@ schema/     machine contracts
 tokens/     source tokens
 src/        executable core modules
 tests/      behavior + architecture checks
-examples/   executable proofs
+examples/   executable proofs + consumer validation
 docs/       human standards and governance
 ```
 
@@ -61,7 +70,7 @@ npm ci
 npm run check
 ```
 
-`npm run check` cleans generated output, builds the TypeScript core, runs all tests, executes the Style Dictionary-backed reference pipeline, and cleans generated output again.
+`npm run check` cleans generated output, builds the TypeScript core, runs all tests, executes the reference pipeline, builds both real consumer validations, and cleans generated output again.
 
 ## Repository policy
 
@@ -69,4 +78,4 @@ npm run check
 - GitHub Actions runs the same verification command on pushes to `main` and on pull requests.
 - Dependency versions are pinned through `package-lock.json`.
 - Generated `dist/` and example output are never source files.
-- The bootstrap intentionally has no GUI and no framework dependency.
+- The core intentionally has no GUI and no framework dependency.

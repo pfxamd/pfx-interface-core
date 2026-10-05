@@ -4,6 +4,7 @@ node_modules/
 # Build and generated output
 dist/
 examples/basic/generated/
+examples/validation/*/generated/
 coverage/
 
 # Logs and temporary files

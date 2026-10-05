@@ -1,0 +1,45 @@
+{
+  "version": "0.1.0",
+  "consumers": [
+    "marketing",
+    "dashboard"
+  ],
+  "result": "core-consumed-without-fork",
+  "contractCandidates": [
+    {
+      "id": "interactive-control",
+      "status": "candidate",
+      "evidence": [
+        "size.control.md",
+        "space.control.inline-md",
+        "space.control.block-md",
+        "border.width.default",
+        "border.style.default",
+        "radius.control.md"
+      ],
+      "reason": "Both materially different consumers independently combine the same control sizing, spacing, border and radius roles."
+    },
+    {
+      "id": "focus-ring",
+      "status": "candidate",
+      "evidence": [
+        "color.focus.ring",
+        "border.width.focus",
+        "border.focus.offset"
+      ],
+      "reason": "Both consumers implement the same focus-visible composition from the accessibility foundation."
+    },
+    {
+      "id": "elevated-surface",
+      "status": "needs-more-evidence",
+      "evidence": [
+        "color.surface.elevated",
+        "color.border.default",
+        "border.width.default",
+        "border.style.default",
+        "shadow.surface.raised"
+      ],
+      "reason": "Both consumers repeat the elevated-surface recipe, but use different semantic radius roles; shape should remain project-specific until more evidence exists."
+    }
+  ]
+}

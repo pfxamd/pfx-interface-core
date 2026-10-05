@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "color": {
+    "palette": {
+      "brand": {
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [0.97, 0.025, 340],
+            "alpha": 1
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [0.62, 0.22, 340],
+            "alpha": 1
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [0.48, 0.2, 340],
+            "alpha": 1
+          }
+        }
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": ["Georgia", "serif"]
+      }
+    }
+  }
+}

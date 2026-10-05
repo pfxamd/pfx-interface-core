@@ -27,8 +27,11 @@ Before adding a foundation or contract, answer all of the following:
 3. Can the behavior be validated or tested?
 4. Is it independent from one framework or visual brand?
 5. Does adding it reduce repeated decisions rather than create a new abstraction burden?
+6. Is the cross-project evidence recorded in `examples/validation/observations.json` or equivalent real-project evidence?
 
 If not, keep it in the project layer.
+
+Consumer validation creates candidates; it does not automatically promote them. A repeated recipe may still remain project-level when its parameters or semantics differ materially.
 
 ## Vendor changes
 
