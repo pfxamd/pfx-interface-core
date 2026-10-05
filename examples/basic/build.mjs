@@ -3,7 +3,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   applyTokenOverrides,
-  compileCss,
+  compileCssWithStyleDictionary,
   mergeDocuments,
   resolveModePlan,
   validateDocument,
@@ -32,7 +32,11 @@ if (!validation.valid) {
 const outputDirectory = resolve(root, 'examples/basic/generated');
 await mkdir(outputDirectory, { recursive: true });
 
-await writeFile(resolve(outputDirectory, 'tokens.css'), compileCss(merged), 'utf8');
+await writeFile(
+  resolve(outputDirectory, 'tokens.css'),
+  await compileCssWithStyleDictionary(merged),
+  'utf8',
+);
 
 const modeProfile = await readJson('config/pfx-modes.v0.1.json');
 const plan = resolveModePlan(modeProfile, {
@@ -46,7 +50,7 @@ const composed = applyTokenOverrides(merged, ...modeDocuments);
 
 await writeFile(
   resolve(outputDirectory, 'tokens.dark-high-compact-reduced.css'),
-  compileCss(composed),
+  await compileCssWithStyleDictionary(composed),
   'utf8',
 );
 

@@ -6,7 +6,7 @@ It is not a UI kit and does not impose a visual identity. It defines reusable to
 
 ## Status
 
-Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`, `motion`, `radius`, `border`, `shadow`, `sizing`, `z-index`, `layout`), composable PFx Modes v0.1, and a machine-readable Accessibility Foundation v0.1. Not yet a stable release and not yet claiming complete DTCG conformance.
+Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`, `motion`, `radius`, `border`, `shadow`, `sizing`, `z-index`, `layout`), composable PFx Modes v0.1, a machine-readable Accessibility Foundation v0.1, and a production Style Dictionary compiler adapter. Not yet a stable release and not yet claiming complete DTCG conformance.
 
 ## Core flow
 
@@ -17,13 +17,14 @@ validation
       ↓
 mode composition
       ↓
-reference resolution
+PFx reference resolution
       ↓
-compiler boundary
+PFx compiler boundary
+      ↓
+Style Dictionary adapter
       ↓
 CSS / machine outputs
 ```
-
 
 ## Current DTCG surface
 
@@ -45,6 +46,10 @@ docs/       human standards and governance
 
 Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`. Foundation consumers should then read `config/pfx-foundations.v0.1.json`; contextual/theme work should also read `config/pfx-modes.v0.1.json`, and accessibility-sensitive work must read `config/pfx-accessibility.v0.1.json`.
 
+## Compiler
+
+PFx owns validation, resolution, naming normalization, and the public compiler contract. Style Dictionary 5.5.5 is the production transformation engine behind that boundary. The deterministic PFx reference compiler remains available for regression comparison and vendor-independence tests.
+
 ## Naming
 
 PFx Interface Core follows the canonical `pfxamd/pfx-naming-system` policy. PFx signatures are used only for genuinely PFx-owned shared architecture. Ordinary semantic code stays naturally named.
@@ -52,15 +57,16 @@ PFx Interface Core follows the canonical `pfxamd/pfx-naming-system` policy. PFx 
 ## Setup
 
 ```bash
-npm install
+npm ci
 npm run check
 ```
 
-`npm run check` cleans generated output, builds the TypeScript core, runs all tests, executes the reference pipeline, and cleans generated output again.
+`npm run check` cleans generated output, builds the TypeScript core, runs all tests, executes the Style Dictionary-backed reference pipeline, and cleans generated output again.
 
 ## Repository policy
 
 - Private, unpublished package (`private: true`, `UNLICENSED`).
 - GitHub Actions runs the same verification command on pushes to `main` and on pull requests.
+- Dependency versions are pinned through `package-lock.json`.
 - Generated `dist/` and example output are never source files.
 - The bootstrap intentionally has no GUI and no framework dependency.

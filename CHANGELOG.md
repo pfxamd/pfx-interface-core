@@ -4,6 +4,15 @@ All notable changes to PFx Interface Core are recorded here.
 
 ## Unreleased
 
+Style Dictionary integration:
+
+- Added Style Dictionary 5.5.5 as the pinned production token transformation engine.
+- Kept PFx validation and resolution authoritative by passing a fully resolved DTCG snapshot across the vendor boundary.
+- Added PFx vendor transforms for duration serialization and natural `$root` custom-property naming.
+- Added full-foundation, composed-mode, selector/header, snapshot, and reference-compiler parity tests.
+- Switched the executable demo pipeline to the Style Dictionary-backed compiler while retaining the deterministic reference compiler for regression checks.
+- Added a locked dependency graph and restored CI to deterministic `npm ci`.
+
 Foundation completion + Accessibility v0.1:
 
 - Added radius, border, shadow, sizing, z-index, and layout foundations with semantic aliases.

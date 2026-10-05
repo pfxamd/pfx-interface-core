@@ -9,7 +9,7 @@ Rules:
 - DTCG-aligned token files are source data. Generated CSS is output, never source of truth.
 - Keep core, validation, mode composition, resolution, compilation, and the public API as explicit modules under `src/`.
 - Keep dependencies one-way: `core` → `validator` → optional `modes` composition → `resolver` → `compiler` → public API composition.
-- Keep vendor tooling behind `src/compiler/`; do not expose vendor APIs to consumers.
+- Keep vendor tooling behind `src/compiler/`; do not expose vendor APIs to consumers. Style Dictionary is pinned and must receive PFx-resolved snapshots rather than owning PFx resolution semantics.
 - Consumers use `src/index.ts` as the stable boundary rather than importing internals.
 - Prefer data/schema changes over hard-coded branches when a rule is declarative.
 - Apply the PFx Naming System at `balanced` fingerprint level. PFx is a fingerprint, not a prefix tax.

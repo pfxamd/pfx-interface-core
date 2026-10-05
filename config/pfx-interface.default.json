@@ -59,7 +59,9 @@
   },
   "vendors": {
     "preferredTokenCompiler": "style-dictionary",
-    "rule": "Vendor tooling must remain behind a PFx-owned compiler adapter boundary."
+    "rule": "Vendor tooling must remain behind a PFx-owned compiler adapter boundary.",
+    "preferredTokenCompilerVersion": "5.5.5",
+    "strategy": "pfx-resolve-then-vendor-transform"
   },
   "conformance": {
     "target": "DTCG-2025.10",

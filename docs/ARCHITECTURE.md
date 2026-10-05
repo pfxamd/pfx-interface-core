@@ -33,9 +33,9 @@ Foundations are active as a data layer (`config/pfx-foundations.v0.1.json` + tok
 5. `src/validator/` — structural validation plus value/type validation rules.
 6. `src/modes/` — deterministic mode planning and safe semantic-token override composition.
 7. `src/resolver/` — group extension, alias/reference resolution, type resolution, missing-reference checks, type compatibility, and cycle detection.
-8. `src/compiler/` — output generation boundary and future vendor adapters.
+8. `src/compiler/` — PFx-owned output boundary, deterministic reference compiler, and isolated vendor adapters.
 9. `src/index.ts` — stable consumer facade.
-10. `tests/` — executable behavior, DTCG compatibility, and architecture checks.
+10. `tests/` — executable behavior, DTCG compatibility, vendor parity, and architecture checks.
 11. `examples/` — executable proofs, never source of truth.
 12. `docs/` — human explanation; executable/schema contracts outrank prose when they conflict.
 
@@ -57,21 +57,27 @@ The bootstrap is one private tool with one consumer boundary. Splitting empty or
 
 ## Vendor isolation
 
-Preferred production token compiler: Style Dictionary.
+Production token compiler: Style Dictionary 5.5.5.
 
-It must sit behind a PFx-owned adapter:
+It sits behind a PFx-owned adapter:
 
 ```text
 consumer
    ↓
 PFx public API
    ↓
-PFx compiler contract
+PFx validation + resolver
+   ↓
+resolved DTCG snapshot
    ↓
 Style Dictionary adapter
+   ↓
+platform output
 ```
 
-The bootstrap includes a deterministic reference compiler to prove and test the pipeline without spreading vendor APIs through the repository.
+PFx resolves aliases, JSON Pointer references, `$root`, group extension, and mode composition before the vendor boundary. The adapter therefore receives a resolved snapshot rather than becoming the owner of PFx semantics. PFx-specific transforms normalize output details such as duration serialization and `$root` naming.
+
+The deterministic reference compiler remains in the repository as a regression oracle and vendor-independence check.
 
 ## AI-first rule
 

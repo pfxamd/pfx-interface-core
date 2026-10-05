@@ -28,7 +28,7 @@ Priority:
 - shared token types/traversal/strict merge → `src/core/`
 - structural/value validation rule → `src/validator/`
 - aliases, JSON Pointer, `$root`, `$extends`, type resolution → `src/resolver/`
-- output generation/vendor adapter → `src/compiler/`
+- output generation/vendor adapter → `src/compiler/`; use the PFx public compiler API, not Style Dictionary directly
 - stable consumer API → `src/index.ts`
 - fixtures/checks → `tests/`
 - active foundation tokens → `config/pfx-foundations.v0.1.json`, `tokens/primitive/`, `tokens/semantic/`, `docs/FOUNDATIONS.md`

@@ -10,9 +10,13 @@ Policy: use the stable 2025.10 concepts as the source model and keep PFx extensi
 
 ## Style Dictionary
 
-Role: preferred production transformation/compiler engine.
+Role: production transformation/compiler engine.
 
-Policy: never expose Style Dictionary as the PFx public API. It belongs behind a compiler adapter so it can be upgraded or replaced without rewriting consumers or token sources.
+Pinned version: `5.5.5`.
+
+Policy: Style Dictionary never owns the PFx public API or source semantics. PFx validates and resolves token data first, creates a resolved DTCG snapshot, then passes that snapshot through the isolated compiler adapter. PFx-specific transforms normalize vendor output where required.
+
+The deterministic PFx reference compiler remains available for parity tests and future vendor replacement.
 
 ## Primer Primitives
 
@@ -36,6 +40,7 @@ PFx owns:
 - validation policy
 - resolver behavior
 - compiler contract
+- vendor normalization transforms
 - promotion/governance rules
 - naming-system integration
 
