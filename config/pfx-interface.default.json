@@ -8,7 +8,10 @@
     "gui": false,
     "frameworkAgnostic": true,
     "visualIdentityAgnostic": true,
-    "promoteOnlyStableRepeatedPatterns": true
+    "promoteOnlyStableRepeatedPatterns": true,
+    "visualDecisionAuthority": "consumer-project-context",
+    "providesDesignCapabilitiesNotDecisions": true,
+    "visualCompositionRecipes": false
   },
   "architecture": {
     "activeModules": [

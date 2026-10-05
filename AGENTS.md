@@ -17,6 +17,7 @@ Rules:
 - Treat `config/pfx-modes.v0.1.json` as the source of truth for mode axes, defaults, and application order; do not invent combined theme files.
 - Treat `config/pfx-accessibility.v0.1.json` as the machine policy for accessibility defaults and verification boundaries; never claim project conformance from token values alone.
 - Treat `examples/validation/` as consumer evidence, not as source-of-truth foundation data.
+- PFx provides design capabilities, not design decisions. Visual composition, navigation, hero/card patterns, hierarchy, art direction, and motion choreography belong to the consuming project and its context.
 - Do not promote a Design Contract unless repeated usage is backed by materially different consumers and recorded evidence.
 - Do not claim full DTCG conformance unless executable tests cover the claimed behavior.
 - No GUI, React, Vue, Next.js, routing, data fetching, authentication, or business logic belongs in the core.

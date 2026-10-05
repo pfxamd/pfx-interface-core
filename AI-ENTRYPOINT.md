@@ -2,6 +2,8 @@
 
 PFx Interface Core is an AI-first, machine-readable interface foundation. It is not a component library, page-template system, application framework, or visual brand.
 
+Design authority belongs to the consuming project. PFx may provide primitives, semantic roles, accessibility constraints, modes, and validated capabilities, but it must not tell ChatGPT, Codex, or a project author what the interface should look like.
+
 When using or modifying this repository:
 
 1. Read `pfx-interface.manifest.json`.
@@ -17,7 +19,14 @@ When using or modifying this repository:
 11. Do not make project code depend on compiler internals or vendor tooling.
 12. Do not add a token family, foundation, contract, or abstraction only because one project needs it. Promote repeated stable patterns.
 13. Keep ordinary functions, local variables, and domain names natural. Use PFx signatures only where shared PFx architecture owns the construct.
-14. Run `npm run check` before considering a change complete.
+14. Never promote a visual composition recipe (navbar shape, hero layout, card treatment, page shell, visual hierarchy, art direction, or motion choreography) into the core merely to make project generation easier.
+15. Run `npm run check` before considering a change complete.
+
+Design decision boundary:
+
+`project request + project context → project/AI visual decisions`
+
+`PFx Interface Core → capabilities + constraints + validation only`
 
 Priority:
 

@@ -94,3 +94,24 @@ relevant schema/data/API
 ```
 
 Do not solve machine-checkable rules with prompt text alone.
+
+
+## Design authority boundary
+
+PFx Interface Core is below the visual-decision layer.
+
+```text
+project request + content + audience + product context
+                     ↓
+         project author / AI agent
+                     ↓
+      visual and interaction decisions
+                     ↓
+      PFx capabilities and constraints
+                     ↓
+             rendered project
+```
+
+The core may define reusable values and constraints such as semantic colors, spacing roles, target sizes, focus behavior, density, motion duration/easing, and output contracts. It must not prescribe a navbar, hero, card system, page shell, composition, visual hierarchy, brand language, or motion choreography.
+
+A project may use the same PFx foundations and still be visually unrelated to every other PFx project. That is expected behavior, not a loss of consistency.

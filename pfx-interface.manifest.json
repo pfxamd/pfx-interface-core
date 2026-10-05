@@ -26,5 +26,10 @@
     "name": "Design Tokens Community Group",
     "version": "2025.10"
   },
-  "publicBoundary": "src/index.ts"
+  "publicBoundary": "src/index.ts",
+  "designAuthority": {
+    "visualDecisionOwner": "consumer-project-context",
+    "coreRole": "capabilities-constraints-validation",
+    "visualCompositionRecipes": false
+  }
 }

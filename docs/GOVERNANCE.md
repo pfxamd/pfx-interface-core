@@ -40,3 +40,14 @@ Changing Style Dictionary or another future vendor must not require token-source
 ## Naming changes
 
 `pfxamd/pfx-naming-system` is canonical for PFx fingerprint rules. This repository records the compatible version but must not fork the naming standard.
+
+
+## Design-authority gate
+
+A reusable capability is eligible for the core only when it remains useful without choosing the final visual composition for the consumer.
+
+Do not promote a pattern when its main value is that it tells projects how to look. In particular, repeated use of a navbar layout, hero composition, card treatment, page shell, editorial rhythm, visual hierarchy, brand treatment, or motion choreography is not enough by itself to make it a core concern.
+
+The governing rule is:
+
+`PFx provides capabilities and constraints; the consuming project makes visual decisions.`

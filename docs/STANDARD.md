@@ -124,6 +124,29 @@ A new foundation or contract enters the core only when it is:
 - testable
 - not a one-project exception
 
+## Design decision authority
+
+The core is an enabling layer, not a design director.
+
+It may provide:
+
+- primitives and semantic roles
+- modes and accessibility constraints
+- stable sizing, focus, spacing, typography, color, border, shadow and motion capabilities
+- validation, resolution and compilation
+
+It must not choose:
+
+- navigation composition
+- hero composition
+- card/list treatment
+- page shells or editorial layouts
+- project visual hierarchy
+- brand art direction
+- project motion choreography
+
+Those decisions are made in the consuming project from the request, content, audience, product goals, platform constraints, and current project context. ChatGPT, Codex, or a human project author may make those decisions; PFx does not.
+
 ## Non-goals
 
 PFx Interface Core does not own:
@@ -137,4 +160,5 @@ PFx Interface Core does not own:
 - business logic
 - a component library
 - a visual brand
+- visual composition recipes or project art direction
 - a GUI for the core itself

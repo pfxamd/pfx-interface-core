@@ -127,3 +127,17 @@ test('all committed machine JSON files parse successfully', async () => {
     assert.doesNotThrow(() => JSON.parse(content), file);
   }
 });
+
+
+test('machine policy keeps visual design authority in the consuming project', async () => {
+  const config = JSON.parse(await readFile(resolve(root, 'config/pfx-interface.default.json'), 'utf8'));
+  const manifest = JSON.parse(await readFile(resolve(root, 'pfx-interface.manifest.json'), 'utf8'));
+
+  assert.equal(config.policy.visualDecisionAuthority, 'consumer-project-context');
+  assert.equal(config.policy.providesDesignCapabilitiesNotDecisions, true);
+  assert.equal(config.policy.visualCompositionRecipes, false);
+
+  assert.equal(manifest.designAuthority.visualDecisionOwner, 'consumer-project-context');
+  assert.equal(manifest.designAuthority.coreRole, 'capabilities-constraints-validation');
+  assert.equal(manifest.designAuthority.visualCompositionRecipes, false);
+});

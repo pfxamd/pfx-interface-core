@@ -4,6 +4,8 @@ PFx Interface Core is an AI-first, machine-readable interface foundation for pro
 
 It is not a UI kit and does not impose a visual identity. It defines reusable token rules, validation, reference/group resolution, compilation boundaries, and stable machine-readable guidance.
 
+**Design authority rule:** PFx provides design capabilities, constraints, and reusable foundations; it does not decide the visual composition. Navigation, hero structure, cards, layout language, hierarchy, art direction, and motion choreography are decided by the consuming project from its own context.
+
 ## Status
 
 Hardened bootstrap with PFx Foundations v0.1, composable PFx Modes v0.1, Accessibility Foundation v0.1, a production Style Dictionary compiler adapter, and two materially different consumer validations. Not yet a stable release and not yet claiming complete DTCG conformance.
