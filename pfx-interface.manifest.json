@@ -1,0 +1,27 @@
+{
+  "$schema": "./schema/interface-manifest.schema.json",
+  "name": "PFx Interface Core",
+  "id": "pfxamd-interface-core",
+  "version": "0.1.0-dev",
+  "status": "bootstrap",
+  "purpose": "AI-first machine-readable foundation for reusable interface rules and tokens",
+  "sourceOfTruth": {
+    "aiEntry": "AI-ENTRYPOINT.md",
+    "machineConfig": "config/pfx-interface.default.json",
+    "humanStandard": "docs/STANDARD.md",
+    "architecture": "docs/ARCHITECTURE.md",
+    "governance": "docs/GOVERNANCE.md",
+    "tokens": "tokens/",
+    "schemas": "schema/"
+  },
+  "namingSystem": {
+    "repository": "pfxamd/pfx-naming-system",
+    "version": "3.1.0",
+    "fingerprintLevel": "balanced"
+  },
+  "tokenStandard": {
+    "name": "Design Tokens Community Group",
+    "version": "2025.10"
+  },
+  "publicBoundary": "src/index.ts"
+}

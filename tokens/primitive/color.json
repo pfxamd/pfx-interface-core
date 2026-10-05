@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "color": {
+    "palette": {
+      "neutral": {
+        "0": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [1, 0, 0],
+            "alpha": 1
+          },
+          "$description": "Neutral light endpoint."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [0.18, 0.01, 265],
+            "alpha": 1
+          },
+          "$description": "Neutral dark endpoint."
+        }
+      },
+      "accent": {
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [0.58, 0.22, 262],
+            "alpha": 1
+          },
+          "$description": "Example accent primitive used only to prove the pipeline."
+        }
+      }
+    }
+  }
+}

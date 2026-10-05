@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "space": {
+    "control": {
+      "inline": {
+        "$type": "dimension",
+        "$value": "{space.4}",
+        "$description": "Default inline control padding role."
+      },
+      "block": {
+        "$type": "dimension",
+        "$value": "{space.2}",
+        "$description": "Default block control padding role."
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build and generated output
+dist/
+examples/basic/generated/
+coverage/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*~
+
+# Environment and local overrides
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

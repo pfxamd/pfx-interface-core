@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "color": {
+    "surface": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.0}",
+        "$description": "Default primary surface role."
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.950}",
+        "$description": "Default primary text role."
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.palette.accent.600}",
+        "$description": "Accent text role."
+      }
+    }
+  }
+}

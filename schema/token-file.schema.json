@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pfxamd.local/schema/token-file.schema.json",
+  "title": "PFx Interface Core DTCG-aligned token source",
+  "type": "object",
+  "minProperties": 1,
+  "properties": {
+    "$schema": { "type": "string" }
+  },
+  "additionalProperties": {
+    "$ref": "#/$defs/node"
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "anyOf": [
+        {
+          "required": ["$value"],
+          "properties": {
+            "$type": { "type": "string" },
+            "$value": {},
+            "$description": { "type": "string" },
+            "$deprecated": {
+              "oneOf": [
+                { "type": "boolean" },
+                { "type": "string" }
+              ]
+            },
+            "$extensions": { "type": "object" }
+          },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "$type": { "type": "string" },
+            "$description": { "type": "string" },
+            "$extensions": { "type": "object" }
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      ]
+    }
+  }
+}

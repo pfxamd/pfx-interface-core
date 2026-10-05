@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pfxamd.local/schema/interface-manifest.schema.json",
+  "type": "object",
+  "required": ["name", "id", "version", "status", "sourceOfTruth", "namingSystem", "tokenStandard", "publicBoundary"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "id": { "type": "string", "pattern": "^pfxamd-[a-z0-9-]+$" },
+    "version": { "type": "string", "minLength": 1 },
+    "status": { "type": "string" },
+    "sourceOfTruth": { "type": "object" },
+    "namingSystem": { "type": "object" },
+    "tokenStandard": { "type": "object" },
+    "publicBoundary": { "type": "string", "minLength": 1 }
+  },
+  "additionalProperties": true
+}

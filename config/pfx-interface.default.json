@@ -1,0 +1,64 @@
+{
+  "$schema": "../schema/interface-config.schema.json",
+  "schemaVersion": 1,
+  "standardVersion": "0.1.0-dev",
+  "policy": {
+    "mode": "advisory-plus-executable-validation",
+    "aiFirst": true,
+    "gui": false,
+    "frameworkAgnostic": true,
+    "visualIdentityAgnostic": true,
+    "promoteOnlyStableRepeatedPatterns": true
+  },
+  "architecture": {
+    "activeModules": [
+      "core",
+      "validator",
+      "resolver",
+      "compiler",
+      "public-api"
+    ],
+    "plannedModules": [
+      "foundations",
+      "contracts"
+    ],
+    "tokenLayers": [
+      "primitive",
+      "semantic",
+      "contract"
+    ],
+    "consumerBoundary": "src/index.ts",
+    "vendorBoundary": "src/compiler/"
+  },
+  "tokens": {
+    "standard": "DTCG-2025.10",
+    "cssPrefix": "--pfx-",
+    "allowedTopLevelCategories": [
+      "color",
+      "space",
+      "size",
+      "radius",
+      "font",
+      "shadow",
+      "motion",
+      "z",
+      "layout",
+      "component"
+    ]
+  },
+  "modes": {
+    "colorScheme": ["light", "dark"],
+    "contrast": ["normal", "high"],
+    "density": ["compact", "default", "comfortable"],
+    "motion": ["full", "reduced", "none"]
+  },
+  "naming": {
+    "canonicalSystem": "pfxamd/pfx-naming-system",
+    "canonicalVersion": "3.1.0",
+    "fingerprintLevel": "balanced"
+  },
+  "vendors": {
+    "preferredTokenCompiler": "style-dictionary",
+    "rule": "Vendor tooling must remain behind a PFx-owned compiler adapter boundary."
+  }
+}
