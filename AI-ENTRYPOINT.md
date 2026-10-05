@@ -5,10 +5,10 @@ PFx Interface Core is an AI-first, machine-readable interface foundation. It is 
 When using or modifying this repository:
 
 1. Read `pfx-interface.manifest.json`.
-2. Read `config/pfx-interface.default.json`.
+2. Read `config/pfx-interface.default.json`, including its conformance declaration.
 3. Read only the relevant sections of `docs/STANDARD.md` and `docs/ARCHITECTURE.md`.
 4. For naming, follow `docs/NAMING-INTEGRATION.md` and the canonical `pfxamd/pfx-naming-system` when accessible.
-5. Treat schemas, executable validation, and tests as stronger than prose when they disagree.
+5. Treat schemas, executable validation, resolver behavior, and tests as stronger than prose when they disagree.
 6. Keep token source data DTCG-aligned and machine-readable.
 7. Do not make project code depend on compiler internals or vendor tooling.
 8. Do not add a token family, foundation, contract, or abstraction only because one project needs it. Promote repeated stable patterns.
@@ -22,9 +22,9 @@ Priority:
 ## Task routing
 
 - token definition/change → `tokens/`, `schema/`, relevant standard section
-- shared token types/traversal → `src/core/`
-- validation rule → `src/validator/`
-- alias/reference behavior → `src/resolver/`
+- shared token types/traversal/strict merge → `src/core/`
+- structural/value validation rule → `src/validator/`
+- aliases, JSON Pointer, `$root`, `$extends`, type resolution → `src/resolver/`
 - output generation/vendor adapter → `src/compiler/`
 - stable consumer API → `src/index.ts`
 - fixtures/checks → `tests/`

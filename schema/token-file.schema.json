@@ -5,40 +5,162 @@
   "type": "object",
   "minProperties": 1,
   "properties": {
-    "$schema": { "type": "string" }
+    "$schema": {
+      "type": "string"
+    },
+    "color": {
+      "$ref": "#/$defs/group"
+    },
+    "space": {
+      "$ref": "#/$defs/group"
+    },
+    "size": {
+      "$ref": "#/$defs/group"
+    },
+    "radius": {
+      "$ref": "#/$defs/group"
+    },
+    "font": {
+      "$ref": "#/$defs/group"
+    },
+    "shadow": {
+      "$ref": "#/$defs/group"
+    },
+    "motion": {
+      "$ref": "#/$defs/group"
+    },
+    "z": {
+      "$ref": "#/$defs/group"
+    },
+    "layout": {
+      "$ref": "#/$defs/group"
+    },
+    "component": {
+      "$ref": "#/$defs/group"
+    }
   },
-  "additionalProperties": {
-    "$ref": "#/$defs/node"
-  },
+  "additionalProperties": false,
   "$defs": {
-    "node": {
+    "type": {
+      "enum": [
+        "color",
+        "dimension",
+        "fontFamily",
+        "fontWeight",
+        "duration",
+        "cubicBezier",
+        "number",
+        "strokeStyle",
+        "border",
+        "transition",
+        "shadow",
+        "gradient",
+        "typography"
+      ]
+    },
+    "token": {
       "type": "object",
-      "anyOf": [
-        {
-          "required": ["$value"],
-          "properties": {
-            "$type": { "type": "string" },
-            "$value": {},
-            "$description": { "type": "string" },
-            "$deprecated": {
-              "oneOf": [
-                { "type": "boolean" },
-                { "type": "string" }
-              ]
+      "properties": {
+        "$type": {
+          "$ref": "#/$defs/type"
+        },
+        "$value": {},
+        "$ref": {
+          "type": "string",
+          "pattern": "^#(?:/.*)?$"
+        },
+        "$description": {
+          "type": "string"
+        },
+        "$deprecated": {
+          "oneOf": [
+            {
+              "type": "boolean"
             },
-            "$extensions": { "type": "object" }
-          },
-          "additionalProperties": false
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "$extensions": {
+          "type": "object"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "$value"
+          ],
+          "not": {
+            "required": [
+              "$ref"
+            ]
+          }
         },
         {
-          "properties": {
-            "$type": { "type": "string" },
-            "$description": { "type": "string" },
-            "$extensions": { "type": "object" }
-          },
-          "additionalProperties": {
-            "$ref": "#/$defs/node"
+          "required": [
+            "$ref"
+          ],
+          "not": {
+            "required": [
+              "$value"
+            ]
           }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "$ref": "#/$defs/type"
+        },
+        "$description": {
+          "type": "string"
+        },
+        "$deprecated": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "$extensions": {
+          "type": "object"
+        },
+        "$extends": {
+          "type": "string",
+          "anyOf": [
+            {
+              "pattern": "^\\{[^{}.]+(?:\\.[^{}.]+)*\\}$"
+            },
+            {
+              "pattern": "^#(?:/.*)?$"
+            }
+          ]
+        },
+        "$root": {
+          "$ref": "#/$defs/token"
+        }
+      },
+      "patternProperties": {
+        "^[a-z0-9]+(?:-[a-z0-9]+)*$": {
+          "$ref": "#/$defs/node"
+        }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/token"
+        },
+        {
+          "$ref": "#/$defs/group"
         }
       ]
     }

@@ -1,6 +1,7 @@
-import type { ColorValue, DimensionValue, TokenDocument } from '../core/index.js';
+import type { ColorValue, DimensionValue, DurationValue, TokenDocument } from '../core/index.js';
 import { isRecord } from '../core/index.js';
 import { resolveDocument, type ResolvedToken } from '../resolver/index.js';
+import { validateDocument } from '../validator/index.js';
 
 export interface CssCompileOptions {
   selector?: string;
@@ -13,42 +14,101 @@ export interface CompilerProvider {
 }
 
 function customPropertyName(token: ResolvedToken): string {
-  return `--pfx-${token.path.join('-')}`;
+  const path = token.path.filter((segment) => segment !== '$root');
+  return `--pfx-${path.join('-')}`;
+}
+
+function trimNumber(value: number): string {
+  return Number(value.toFixed(6)).toString();
+}
+
+function alphaSuffix(alpha: number | undefined): string {
+  return alpha !== undefined && alpha < 1 ? ` / ${trimNumber(alpha)}` : '';
+}
+
+function component(value: number | 'none'): string {
+  return value === 'none' ? 'none' : trimNumber(value);
+}
+
+function percentageComponent(value: number | 'none'): string {
+  return value === 'none' ? 'none' : `${trimNumber(value)}%`;
 }
 
 function serializeColor(value: unknown): string {
   if (!isRecord(value)) throw new Error('Color token must resolve to a structured color value.');
   const candidate = value as unknown as ColorValue;
-  if (!Array.isArray(candidate.components) || typeof candidate.colorSpace !== 'string') {
+  if (!Array.isArray(candidate.components) || candidate.components.length !== 3 || typeof candidate.colorSpace !== 'string') {
     throw new Error('Invalid structured color value.');
   }
-
-  const alpha = candidate.alpha ?? 1;
-  const [a, b, c] = candidate.components;
-  if (candidate.colorSpace.toLowerCase() === 'oklch') {
-    if (typeof a !== 'number' || typeof b !== 'number' || (typeof c !== 'number' && c !== 'none')) {
-      throw new Error('Invalid OKLCH components.');
-    }
-    const lightness = `${trimNumber(a * 100)}%`;
-    const hue = c === 'none' ? 'none' : trimNumber(c);
-    return `oklch(${lightness} ${trimNumber(b)} ${hue}${alpha < 1 ? ` / ${trimNumber(alpha)}` : ''})`;
+  if (candidate.components.some((item) => typeof item !== 'number' && item !== 'none')) {
+    throw new Error('Color references must be resolved before CSS compilation.');
+  }
+  if (candidate.alpha !== undefined && typeof candidate.alpha !== 'number') {
+    throw new Error('Color alpha references must be resolved before CSS compilation.');
   }
 
-  const serializedComponents = candidate.components.map((item) => String(item)).join(' ');
-  return `color(${candidate.colorSpace} ${serializedComponents}${alpha < 1 ? ` / ${trimNumber(alpha)}` : ''})`;
+  const values = candidate.components as Array<number | 'none'>;
+  const a = values[0]!;
+  const b = values[1]!;
+  const c = values[2]!;
+  const suffix = alphaSuffix(candidate.alpha as number | undefined);
+
+  switch (candidate.colorSpace) {
+    case 'hsl':
+      return `hsl(${component(a)} ${percentageComponent(b)} ${percentageComponent(c)}${suffix})`;
+    case 'hwb':
+      return `hwb(${component(a)} ${percentageComponent(b)} ${percentageComponent(c)}${suffix})`;
+    case 'lab':
+      return `lab(${percentageComponent(a)} ${component(b)} ${component(c)}${suffix})`;
+    case 'lch':
+      return `lch(${percentageComponent(a)} ${component(b)} ${component(c)}${suffix})`;
+    case 'oklab': {
+      const lightness = a === 'none' ? 'none' : `${trimNumber(a * 100)}%`;
+      return `oklab(${lightness} ${component(b)} ${component(c)}${suffix})`;
+    }
+    case 'oklch': {
+      const lightness = a === 'none' ? 'none' : `${trimNumber(a * 100)}%`;
+      return `oklch(${lightness} ${component(b)} ${component(c)}${suffix})`;
+    }
+    case 'srgb':
+    case 'srgb-linear':
+    case 'display-p3':
+    case 'a98-rgb':
+    case 'prophoto-rgb':
+    case 'rec2020':
+    case 'xyz-d65':
+    case 'xyz-d50':
+      return `color(${candidate.colorSpace} ${component(a)} ${component(b)} ${component(c)}${suffix})`;
+    default:
+      throw new Error(`Unsupported color space for CSS output: ${candidate.colorSpace}`);
+  }
 }
 
 function serializeDimension(value: unknown): string {
   if (!isRecord(value)) throw new Error('Dimension token must resolve to a structured dimension value.');
   const candidate = value as unknown as DimensionValue;
   if (typeof candidate.value !== 'number' || typeof candidate.unit !== 'string') {
-    throw new Error('Invalid dimension value.');
+    throw new Error('Dimension references must be resolved before CSS compilation.');
   }
   return `${trimNumber(candidate.value)}${candidate.unit}`;
 }
 
-function trimNumber(value: number): string {
-  return Number(value.toFixed(6)).toString();
+function serializeDuration(value: unknown): string {
+  if (!isRecord(value)) throw new Error('Duration token must resolve to a structured duration value.');
+  const candidate = value as unknown as DurationValue;
+  if (typeof candidate.value !== 'number' || typeof candidate.unit !== 'string') {
+    throw new Error('Duration references must be resolved before CSS compilation.');
+  }
+  return `${trimNumber(candidate.value)}${candidate.unit}`;
+}
+
+function serializeFontFamily(value: unknown): string {
+  const families = typeof value === 'string' ? [value] : value;
+  if (!Array.isArray(families) || !families.every((item) => typeof item === 'string')) {
+    throw new Error('Invalid fontFamily value.');
+  }
+  const genericFamilies = new Set(['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'math', 'fangsong']);
+  return families.map((family) => genericFamilies.has(family) ? family : JSON.stringify(family)).join(', ');
 }
 
 function serializeToken(token: ResolvedToken): string {
@@ -57,28 +117,47 @@ function serializeToken(token: ResolvedToken): string {
       return serializeColor(token.resolvedValue);
     case 'dimension':
       return serializeDimension(token.resolvedValue);
+    case 'duration':
+      return serializeDuration(token.resolvedValue);
     case 'number':
       return String(token.resolvedValue);
-    case 'boolean':
-      return token.resolvedValue ? 'true' : 'false';
-    default:
-      if (typeof token.resolvedValue === 'string' || typeof token.resolvedValue === 'number') {
-        return String(token.resolvedValue);
+    case 'fontWeight':
+      return String(token.resolvedValue);
+    case 'fontFamily':
+      return serializeFontFamily(token.resolvedValue);
+    case 'cubicBezier': {
+      if (!Array.isArray(token.resolvedValue) || token.resolvedValue.length !== 4 || token.resolvedValue.some((item) => typeof item !== 'number')) {
+        throw new Error('Invalid resolved cubicBezier value.');
       }
-      throw new Error(`Reference compiler does not yet serialize token type: ${token.type ?? 'unknown'}`);
+      return `cubic-bezier(${token.resolvedValue.map((item) => trimNumber(item as number)).join(', ')})`;
+    }
+    default:
+      throw new Error(`Reference compiler does not yet serialize token type: ${token.type}`);
   }
 }
 
 export const referenceCompiler: CompilerProvider = {
   name: 'pfx-reference',
   compileCss(document, options = {}) {
+    const validation = validateDocument(document);
+    if (!validation.valid) {
+      const detail = validation.issues.map((issue) => `${issue.path}: ${issue.message}`).join('\n');
+      throw new Error(`Token validation failed:\n${detail}`);
+    }
+
     const selector = options.selector ?? ':root';
     const header = options.header ?? '/* Generated by PFx Interface Core. Do not edit directly. */';
     const resolved = resolveDocument(document).tokens;
+    const names = new Set<string>();
     const lines = resolved
       .slice()
       .sort((left, right) => left.name.localeCompare(right.name))
-      .map((token) => `  ${customPropertyName(token)}: ${serializeToken(token)};`);
+      .map((token) => {
+        const name = customPropertyName(token);
+        if (names.has(name)) throw new Error(`CSS custom property collision: ${name}`);
+        names.add(name);
+        return `  ${name}: ${serializeToken(token)};`;
+      });
 
     return `${header}\n${selector} {\n${lines.join('\n')}\n}\n`;
   },

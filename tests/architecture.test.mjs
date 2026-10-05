@@ -59,3 +59,31 @@ test('machine config and executable token categories stay synchronized', async (
   const built = await import('../dist/src/index.js');
   assert.deepEqual([...built.tokenCategories], config.tokens.allowedTopLevelCategories);
 });
+
+test('machine-readable conformance declaration matches the implemented bootstrap target', async () => {
+  const config = JSON.parse(await readFile(resolve(root, 'config/pfx-interface.default.json'), 'utf8'));
+  assert.equal(config.conformance.target, 'DTCG-2025.10');
+  assert.equal(config.conformance.status, 'documented-subset');
+  assert.equal(config.conformance.supported.rootTokens, true);
+  assert.equal(config.conformance.supported.jsonPointerReferences, true);
+  assert.equal(config.conformance.supported.groupExtends, true);
+  assert.equal(config.conformance.supported.groupRefAlias, false);
+});
+
+test('all committed machine JSON files parse successfully', async () => {
+  const files = [
+    'config/pfx-interface.default.json',
+    'pfx-interface.manifest.json',
+    'schema/interface-config.schema.json',
+    'schema/interface-manifest.schema.json',
+    'schema/token-file.schema.json',
+    'tokens/primitive/color.json',
+    'tokens/primitive/space.json',
+    'tokens/semantic/color.json',
+    'tokens/semantic/space.json',
+  ];
+  for (const file of files) {
+    const content = await readFile(resolve(root, file), 'utf8');
+    assert.doesNotThrow(() => JSON.parse(content), file);
+  }
+});

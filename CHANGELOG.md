@@ -2,6 +2,18 @@
 
 All notable changes to PFx Interface Core are recorded here.
 
+## Unreleased
+
+Hardening pass:
+
+- Added DTCG `$root`, JSON Pointer/property references, alias type inference, and `$extends` group resolution.
+- Added circular group/reference detection and resolved value/type checks.
+- Enforced PFx deterministic source naming and strict duplicate-token merges.
+- Corrected DTCG primitive type validation, including color ranges and dimension units.
+- Removed non-DTCG `boolean` and `string` token types from the bootstrap type surface.
+- Expanded CSS color serialization and made compilation reject invalid token sources.
+- Expanded regression coverage from 12 to 35 tests.
+
 ## 0.1.0-dev
 
 Initial bootstrap foundation:

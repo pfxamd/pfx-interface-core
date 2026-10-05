@@ -8,29 +8,31 @@ PFx Interface Core is a small AI-first system with machine-readable contracts, o
 Token data / config / schemas
           ↓
          core
-       ↙      ↘
- validator  resolver
-               ↓
-            compiler
-               ↓
-        public API (src/index.ts)
-               ↓
-        projects / AI agents
+          ↓
+       validator
+          ↓
+       resolver
+          ↓
+       compiler
+          ↓
+  public API (src/index.ts)
+          ↓
+ projects / AI agents
 ```
 
 Foundations and contracts are planned capabilities, not empty modules. They are added only after repeated real-project use passes the promotion gate.
 
 ## Repository layers
 
-1. `config/` — machine policy and defaults.
-2. `schema/` — machine-readable contracts.
+1. `config/` — machine policy, supported conformance surface, and defaults.
+2. `schema/` — machine-readable source contracts.
 3. `tokens/` — DTCG-aligned source tokens. Never generated CSS.
-4. `src/core/` — shared token types and low-level traversal helpers.
-5. `src/validator/` — structural validation and policy checks.
-6. `src/resolver/` — alias resolution, missing-reference checks, type compatibility, and cycle detection.
+4. `src/core/` — shared token types, traversal, strict document merging, and low-level helpers.
+5. `src/validator/` — structural validation plus value/type validation rules.
+6. `src/resolver/` — group extension, alias/reference resolution, type resolution, missing-reference checks, type compatibility, and cycle detection.
 7. `src/compiler/` — output generation boundary and future vendor adapters.
 8. `src/index.ts` — stable consumer facade.
-9. `tests/` — executable behavior and architecture checks.
+9. `tests/` — executable behavior, DTCG compatibility, and architecture checks.
 10. `examples/` — executable proofs, never source of truth.
 11. `docs/` — human explanation; executable/schema contracts outrank prose when they conflict.
 
@@ -39,9 +41,9 @@ Foundations and contracts are planned capabilities, not empty modules. They are 
 - Token source files never depend on code.
 - `core` has no dependency on validator, resolver, compiler, the public API, or vendors.
 - `validator` may depend on `core` only.
-- `resolver` may depend on `core` only.
-- `compiler` may depend on `core` and `resolver`.
-- `src/index.ts` may compose the public capabilities but must not contain business logic.
+- `resolver` may depend on `core` and validator rules, never on compiler or vendors.
+- `compiler` may depend on core, validator, and resolver.
+- `src/index.ts` may compose public capabilities but must not contain domain logic.
 - Vendor tooling belongs only behind `src/compiler/`.
 - Consumers should use the public API rather than internal module paths.
 
@@ -65,7 +67,7 @@ PFx compiler contract
 Style Dictionary adapter
 ```
 
-The bootstrap includes a minimal deterministic reference compiler to prove the pipeline without spreading custom compilation logic into other modules.
+The bootstrap includes a deterministic reference compiler to prove and test the pipeline without spreading vendor APIs through the repository.
 
 ## AI-first rule
 

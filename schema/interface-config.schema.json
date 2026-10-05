@@ -2,16 +2,69 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://pfxamd.local/schema/interface-config.schema.json",
   "type": "object",
-  "required": ["schemaVersion", "standardVersion", "policy", "architecture", "tokens", "naming"],
+  "required": [
+    "schemaVersion",
+    "standardVersion",
+    "policy",
+    "architecture",
+    "tokens",
+    "naming",
+    "conformance"
+  ],
   "properties": {
-    "schemaVersion": { "type": "integer", "minimum": 1 },
-    "standardVersion": { "type": "string", "minLength": 1 },
-    "policy": { "type": "object" },
-    "architecture": { "type": "object" },
-    "tokens": { "type": "object" },
-    "modes": { "type": "object" },
-    "naming": { "type": "object" },
-    "vendors": { "type": "object" }
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "standardVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "object"
+    },
+    "architecture": {
+      "type": "object"
+    },
+    "tokens": {
+      "type": "object"
+    },
+    "modes": {
+      "type": "object"
+    },
+    "naming": {
+      "type": "object"
+    },
+    "vendors": {
+      "type": "object"
+    },
+    "conformance": {
+      "type": "object",
+      "required": [
+        "target",
+        "status",
+        "supported",
+        "validation"
+      ],
+      "properties": {
+        "target": {
+          "const": "DTCG-2025.10"
+        },
+        "status": {
+          "enum": [
+            "documented-subset",
+            "conformant"
+          ]
+        },
+        "supported": {
+          "type": "object"
+        },
+        "validation": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": true
 }

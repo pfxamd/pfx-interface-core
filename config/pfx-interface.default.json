@@ -47,10 +47,24 @@
     ]
   },
   "modes": {
-    "colorScheme": ["light", "dark"],
-    "contrast": ["normal", "high"],
-    "density": ["compact", "default", "comfortable"],
-    "motion": ["full", "reduced", "none"]
+    "colorScheme": [
+      "light",
+      "dark"
+    ],
+    "contrast": [
+      "normal",
+      "high"
+    ],
+    "density": [
+      "compact",
+      "default",
+      "comfortable"
+    ],
+    "motion": [
+      "full",
+      "reduced",
+      "none"
+    ]
   },
   "naming": {
     "canonicalSystem": "pfxamd/pfx-naming-system",
@@ -60,5 +74,22 @@
   "vendors": {
     "preferredTokenCompiler": "style-dictionary",
     "rule": "Vendor tooling must remain behind a PFx-owned compiler adapter boundary."
+  },
+  "conformance": {
+    "target": "DTCG-2025.10",
+    "status": "documented-subset",
+    "supported": {
+      "rootTokens": true,
+      "curlyTokenAliases": true,
+      "jsonPointerReferences": true,
+      "propertyLevelReferences": true,
+      "groupExtends": true,
+      "groupRefAlias": false,
+      "typeInheritance": true
+    },
+    "validation": {
+      "primitiveTypes": "strict",
+      "compositeTypes": "structural-bootstrap"
+    }
   }
 }

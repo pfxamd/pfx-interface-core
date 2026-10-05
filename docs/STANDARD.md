@@ -4,16 +4,32 @@
 
 PFx Interface Core defines reusable interface decisions and machine contracts. It does not define product business logic or a fixed visual identity.
 
-## Source model
+## DTCG target and conformance
 
-The token source follows DTCG 2025.10 concepts:
+The source model targets the stable DTCG 2025.10 specification. The bootstrap deliberately records its supported subset in `config/pfx-interface.default.json` rather than claiming complete DTCG conformance prematurely.
 
-- `$type`
-- `$value`
-- `$description`
-- aliases using `{path.to.token}`
-- optional `$extensions`
-- optional deprecation metadata
+Currently supported and tested:
+
+- `$value` tokens and group `$type` inheritance
+- `$root` tokens
+- curly-brace whole-token aliases
+- JSON Pointer `$ref` token references
+- JSON Pointer property-level references inside structured values
+- chained references and circular-reference detection
+- `$extends` group inheritance with local overrides
+- DTCG primitive type constraints used by the core
+
+Not yet claimed as complete:
+
+- JSON Schema-style group `$ref` as an alternative spelling for `$extends`
+- exhaustive semantic validation of every composite DTCG type
+- complete production output coverage for every DTCG type
+
+## Source naming policy
+
+DTCG permits a wider set of token names, but PFx Interface Core intentionally uses a deterministic source subset so generated `--pfx-*` names remain stable and collision-resistant.
+
+Ordinary token/group segments use lowercase kebab-case or numeric segments. `$root` is the only reserved token-name exception handled as part of the DTCG format.
 
 ## Token layers
 
@@ -52,41 +68,43 @@ Example:
 --pfx-space-control-inline
 ```
 
+A DTCG `$root` token omits the literal `$root` segment in CSS output. For example `color.accent.$root` becomes `--pfx-color-accent`.
+
 ## Validation
 
-Validation is split into two concepts:
+Validation is split across structural and relational stages:
 
-- structural validation — token shape, type presence, value shape
-- relational validation — missing aliases, cycles, type mismatches, layer constraints
+- structural validation — shape, names, metadata, declared type, literal value constraints
+- relational resolution — missing aliases, group inheritance, cycles, resolved type inference, and resolved value/type compatibility
 
-The bootstrap executable validator implements the first essential subset and alias checks are enforced by the resolver.
+The compiler validates before emitting output.
 
 ## Resolution
 
-Aliases are whole-value references in the bootstrap. Resolution must:
+Whole-token aliases may omit `$type`; in that case the resolved target type takes precedence over a parent group's `$type`, matching DTCG rules.
 
-- find the referenced token
-- preserve the consumer token identity
-- detect missing references
-- detect cycles
-- keep output deterministic
+JSON Pointer references can target complete token values or individual properties. Property-level references are recursively resolved before output.
+
+Group `$extends` performs inherited deep merge with local replacement at the same token path. Circular group inheritance is an error.
 
 ## Compilation
 
 Compilation is an output concern, never a token-source concern.
 
-The CSS compiler converts resolved shared tokens to PFx custom properties. Generated CSS must not be edited as source.
+The reference CSS compiler converts supported resolved tokens to PFx custom properties and handles DTCG color spaces with valid CSS Color syntax. Generated CSS must not be edited as source.
+
+The reference compiler is intentionally not the final production transformation engine. Style Dictionary remains the preferred production adapter behind the PFx compiler boundary.
 
 ## Modes and themes
 
-Modes are independent axes rather than combinatorial theme files:
+Modes remain independent axes rather than combinatorial theme files:
 
 - color scheme
 - contrast
 - density
 - motion
 
-The detailed resolver model is intentionally deferred until the base token pipeline is proven.
+The detailed mode resolver is intentionally deferred until the base token pipeline is proven across real projects.
 
 ## Promotion rule
 

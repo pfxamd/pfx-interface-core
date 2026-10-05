@@ -1,11 +1,14 @@
 export {
   flattenTokens,
+  isReferenceValue,
   mergeDocuments,
   tokenCategories,
   tokenTypes,
   type ColorValue,
   type DimensionValue,
+  type DurationValue,
   type FlatToken,
+  type ReferenceValue,
   type TokenDefinition,
   type TokenDocument,
   type TokenType,
@@ -13,8 +16,13 @@ export {
   type ValidationResult,
 } from './core/index.js';
 
-export { validateDocument } from './validator/index.js';
-export { resolveDocument, type ResolveResult, type ResolvedToken } from './resolver/index.js';
+export { validateDocument, validateTokenValue } from './validator/index.js';
+export {
+  resolveDocument,
+  resolveGroupExtensions,
+  type ResolveResult,
+  type ResolvedToken,
+} from './resolver/index.js';
 export {
   compileCss,
   referenceCompiler,
