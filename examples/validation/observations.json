@@ -5,6 +5,33 @@
     "dashboard"
   ],
   "result": "core-consumed-without-fork",
+  "metrics": {
+    "tests": {
+      "total": 71,
+      "pass": 71,
+      "fail": 0
+    },
+    "marketing": {
+      "tokenCount": 171,
+      "cssVariableCount": 171,
+      "consumedVariableCount": 38,
+      "missingVariableCount": 0
+    },
+    "dashboard": {
+      "tokenCount": 169,
+      "cssVariableCount": 169,
+      "consumedVariableCount": 35,
+      "missingVariableCount": 0
+    }
+  },
+  "coreFindings": [
+    {
+      "id": "source-schema-metadata",
+      "status": "resolved",
+      "finding": "Source files at different directory depths can legitimately carry different relative $schema paths; mergeDocuments must not treat the root $schema hint as a token metadata conflict.",
+      "resolution": "The composed graph now keeps the first root $schema hint while preserving strict conflict behavior for semantic metadata. A regression test covers the case."
+    }
+  ],
   "contractCandidates": [
     {
       "id": "interactive-control",

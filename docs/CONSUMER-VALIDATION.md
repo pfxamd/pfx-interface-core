@@ -16,6 +16,13 @@ Uses:
 - semantic layout, surface, action, typography and focus roles
 - Container Query behavior in project CSS
 
+Verified output:
+
+- 171 resolved tokens
+- 171 emitted PFx CSS variables
+- 38 PFx variables consumed by project CSS
+- 0 missing variable references
+
 ## Dashboard consumer
 
 Purpose: dense operational dashboard.
@@ -30,6 +37,13 @@ Uses:
 - semantic z-index, target size, surfaces and focus roles
 - viewport Media Query behavior in project CSS
 
+Verified output:
+
+- 169 resolved tokens
+- 169 emitted PFx CSS variables
+- 35 PFx variables consumed by project CSS
+- 0 missing variable references
+
 ## Pass criteria
 
 Each consumer must:
@@ -41,6 +55,14 @@ Each consumer must:
 5. compile successfully;
 6. reference only CSS variables actually emitted by PFx;
 7. preserve the foundation and accessibility checks already enforced by the repository.
+
+The validation run passed 71/71 repository tests.
+
+## Core finding discovered by real consumption
+
+The first validation run exposed a real composition bug: source token files in different directories can use different relative `$schema` strings, and `mergeDocuments()` incorrectly treated those file-local hints as conflicting token metadata.
+
+The core was fixed rather than working around the problem in the examples. Root `$schema` is now treated as source-file metadata during composition, while other metadata conflicts remain strict. A regression test protects the behavior.
 
 ## Contract evidence
 
