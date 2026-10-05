@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "font": {
+    "body": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "{font.size.md}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{font.line-height.normal}"
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": "{font.weight.regular}"
+      }
+    },
+    "heading": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.sans}"
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$value": "{font.weight.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{font.line-height.tight}"
+      },
+      "tracking": {
+        "$type": "dimension",
+        "$value": "{font.tracking.tight}"
+      }
+    },
+    "code": {
+      "family": {
+        "$type": "fontFamily",
+        "$value": "{font.family.mono}"
+      },
+      "size": {
+        "$type": "dimension",
+        "$value": "{font.size.sm}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{font.line-height.normal}"
+      }
+    }
+  }
+}

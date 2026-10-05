@@ -15,6 +15,8 @@ const documents = await Promise.all([
   readJson('tokens/primitive/space.json'),
   readJson('tokens/semantic/color.json'),
   readJson('tokens/semantic/space.json'),
+  readJson('tokens/primitive/typography.json'),
+  readJson('tokens/semantic/typography.json'),
 ]);
 
 const merged = mergeDocuments(...documents);

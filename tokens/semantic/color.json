@@ -2,22 +2,75 @@
   "$schema": "../../schema/token-file.schema.json",
   "color": {
     "surface": {
-      "primary": {
+      "canvas": {
         "$type": "color",
-        "$value": "{color.palette.neutral.0}",
-        "$description": "Default primary surface role."
+        "$value": "{color.palette.neutral.0}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.50}"
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.0}"
       }
     },
     "text": {
       "primary": {
         "$type": "color",
-        "$value": "{color.palette.neutral.950}",
-        "$description": "Default primary text role."
+        "$value": "{color.palette.neutral.950}"
       },
-      "accent": {
+      "secondary": {
         "$type": "color",
-        "$value": "{color.palette.accent.600}",
-        "$description": "Accent text role."
+        "$value": "{color.palette.neutral.700}"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.500}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.0}"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.200}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.400}"
+      }
+    },
+    "action": {
+      "primary": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.950}"
+      },
+      "primary-hover": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.800}"
+      },
+      "primary-text": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.0}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.950}"
+      }
+    },
+    "state": {
+      "disabled-surface": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.100}"
+      },
+      "disabled-text": {
+        "$type": "color",
+        "$value": "{color.palette.neutral.400}"
       }
     }
   }

@@ -7,30 +7,145 @@
           "$type": "color",
           "$value": {
             "colorSpace": "oklch",
-            "components": [1, 0, 0],
+            "components": [
+              1,
+              0,
+              0
+            ],
             "alpha": 1
-          },
-          "$description": "Neutral light endpoint."
+          }
+        },
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.985,
+              0.002,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.96,
+              0.004,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.9,
+              0.006,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.82,
+              0.008,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.7,
+              0.01,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.58,
+              0.012,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.48,
+              0.012,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.39,
+              0.012,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.3,
+              0.012,
+              260
+            ],
+            "alpha": 1
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "oklch",
+            "components": [
+              0.23,
+              0.011,
+              260
+            ],
+            "alpha": 1
+          }
         },
         "950": {
           "$type": "color",
           "$value": {
             "colorSpace": "oklch",
-            "components": [0.18, 0.01, 265],
+            "components": [
+              0.18,
+              0.01,
+              265
+            ],
             "alpha": 1
-          },
-          "$description": "Neutral dark endpoint."
-        }
-      },
-      "accent": {
-        "600": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "oklch",
-            "components": [0.58, 0.22, 262],
-            "alpha": 1
-          },
-          "$description": "Example accent primitive used only to prove the pipeline."
+          }
         }
       }
     }

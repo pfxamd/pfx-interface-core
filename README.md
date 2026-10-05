@@ -6,7 +6,7 @@ It is not a UI kit and does not impose a visual identity. It defines reusable to
 
 ## Status
 
-Hardened bootstrap architecture / prototype. Not yet a stable release and not yet claiming complete DTCG conformance.
+Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`). Not yet a stable release and not yet claiming complete DTCG conformance.
 
 ## Core flow
 
@@ -25,7 +25,7 @@ CSS / machine outputs
 
 ## Current DTCG surface
 
-The bootstrap targets DTCG 2025.10 and currently tests `$root`, whole-token aliases, JSON Pointer/property references, `$extends`, type inheritance, circular-reference detection, and strict primitive validation. The exact supported surface is machine-readable in `config/pfx-interface.default.json`.
+The core targets DTCG 2025.10 and currently tests `$root`, whole-token aliases, JSON Pointer/property references, `$extends`, type inheritance, circular-reference detection, and strict primitive validation. The exact supported surface is machine-readable in `config/pfx-interface.default.json`.
 
 ## Structure
 
@@ -41,7 +41,7 @@ docs/       human standards and governance
 
 ## AI workflow
 
-Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`.
+Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`. Foundation consumers should then read `config/pfx-foundations.v0.1.json`.
 
 ## Naming
 

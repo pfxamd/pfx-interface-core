@@ -12,7 +12,8 @@
     "architecture": "docs/ARCHITECTURE.md",
     "governance": "docs/GOVERNANCE.md",
     "tokens": "tokens/",
-    "schemas": "schema/"
+    "schemas": "schema/",
+    "foundations": "config/pfx-foundations.v0.1.json"
   },
   "namingSystem": {
     "repository": "pfxamd/pfx-naming-system",

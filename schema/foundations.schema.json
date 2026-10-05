@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pfxamd.local/schema/foundations.schema.json",
+  "type": "object",
+  "required": ["version", "status", "policy", "families"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["draft", "active", "deprecated"] },
+    "policy": {
+      "type": "object",
+      "required": ["consumeSemanticByDefault", "primitiveAccess", "visualIdentity", "contracts"],
+      "additionalProperties": false,
+      "properties": {
+        "consumeSemanticByDefault": { "type": "boolean" },
+        "primitiveAccess": { "type": "string", "minLength": 1 },
+        "visualIdentity": { "type": "string", "minLength": 1 },
+        "contracts": { "type": "string", "minLength": 1 }
+      }
+    },
+    "families": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["primitive", "semantic", "requiredSemantic"],
+        "additionalProperties": false,
+        "properties": {
+          "primitive": { "type": "string", "minLength": 1 },
+          "semantic": { "type": "string", "minLength": 1 },
+          "requiredSemantic": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

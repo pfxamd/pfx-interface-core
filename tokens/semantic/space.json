@@ -2,15 +2,55 @@
   "$schema": "../../schema/token-file.schema.json",
   "space": {
     "control": {
-      "inline": {
+      "inline-sm": {
         "$type": "dimension",
-        "$value": "{space.4}",
-        "$description": "Default inline control padding role."
+        "$value": "{space.3}"
       },
-      "block": {
+      "inline-md": {
         "$type": "dimension",
-        "$value": "{space.2}",
-        "$description": "Default block control padding role."
+        "$value": "{space.4}"
+      },
+      "inline-lg": {
+        "$type": "dimension",
+        "$value": "{space.5}"
+      },
+      "block-sm": {
+        "$type": "dimension",
+        "$value": "{space.2}"
+      },
+      "block-md": {
+        "$type": "dimension",
+        "$value": "{space.3}"
+      },
+      "block-lg": {
+        "$type": "dimension",
+        "$value": "{space.4}"
+      }
+    },
+    "layout": {
+      "gap-sm": {
+        "$type": "dimension",
+        "$value": "{space.4}"
+      },
+      "gap-md": {
+        "$type": "dimension",
+        "$value": "{space.6}"
+      },
+      "gap-lg": {
+        "$type": "dimension",
+        "$value": "{space.8}"
+      },
+      "section-sm": {
+        "$type": "dimension",
+        "$value": "{space.8}"
+      },
+      "section-md": {
+        "$type": "dimension",
+        "$value": "{space.12}"
+      },
+      "section-lg": {
+        "$type": "dimension",
+        "$value": "{space.16}"
       }
     }
   }

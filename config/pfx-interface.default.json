@@ -16,10 +16,10 @@
       "validator",
       "resolver",
       "compiler",
-      "public-api"
+      "public-api",
+      "foundations-data"
     ],
     "plannedModules": [
-      "foundations",
       "contracts"
     ],
     "tokenLayers": [
@@ -28,7 +28,8 @@
       "contract"
     ],
     "consumerBoundary": "src/index.ts",
-    "vendorBoundary": "src/compiler/"
+    "vendorBoundary": "src/compiler/",
+    "foundationProfile": "config/pfx-foundations.v0.1.json"
   },
   "tokens": {
     "standard": "DTCG-2025.10",

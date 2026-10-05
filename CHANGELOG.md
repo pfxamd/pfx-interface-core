@@ -4,6 +4,14 @@ All notable changes to PFx Interface Core are recorded here.
 
 ## Unreleased
 
+PFx Foundations v0.1:
+
+- Activated machine-readable foundation profile for color, spacing, and typography.
+- Expanded neutral color and spacing scales without imposing a project accent identity.
+- Added semantic surface, text, border, action, focus, disabled, control-spacing, and layout-spacing roles.
+- Added system-font typography primitives and semantic body/heading/code roles.
+- Added executable foundation integrity tests and example compilation coverage.
+
 Hardening pass:
 
 - Added DTCG `$root`, JSON Pointer/property references, alias type inference, and `$extends` group resolution.

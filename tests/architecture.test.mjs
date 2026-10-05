@@ -48,7 +48,7 @@ test('vendor tooling is isolated to compiler', async () => {
   assert.equal(publicApi.includes('style-dictionary'), false);
 });
 
-test('bootstrap contains no speculative foundation, contract, GUI, or workspace layer', async () => {
+test('bootstrap contains no speculative runtime foundation, contract, GUI, or workspace layer', async () => {
   for (const relativePath of ['src/foundations', 'src/contracts', 'apps', 'ui', 'packages']) {
     await assert.rejects(access(resolve(root, relativePath)), /ENOENT/);
   }
@@ -73,14 +73,18 @@ test('machine-readable conformance declaration matches the implemented bootstrap
 test('all committed machine JSON files parse successfully', async () => {
   const files = [
     'config/pfx-interface.default.json',
+    'config/pfx-foundations.v0.1.json',
     'pfx-interface.manifest.json',
     'schema/interface-config.schema.json',
+    'schema/foundations.schema.json',
     'schema/interface-manifest.schema.json',
     'schema/token-file.schema.json',
     'tokens/primitive/color.json',
     'tokens/primitive/space.json',
+    'tokens/primitive/typography.json',
     'tokens/semantic/color.json',
     'tokens/semantic/space.json',
+    'tokens/semantic/typography.json',
   ];
   for (const file of files) {
     const content = await readFile(resolve(root, file), 'utf8');

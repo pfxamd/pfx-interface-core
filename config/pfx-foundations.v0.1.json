@@ -1,0 +1,69 @@
+{
+  "$schema": "../schema/foundations.schema.json",
+  "version": "0.1.0",
+  "status": "active",
+  "policy": {
+    "consumeSemanticByDefault": true,
+    "primitiveAccess": "foundation-authoring-only",
+    "visualIdentity": "neutral-defaults-overridable-by-project",
+    "contracts": "deferred-until-repeated-project-evidence"
+  },
+  "families": {
+    "color": {
+      "primitive": "tokens/primitive/color.json",
+      "semantic": "tokens/semantic/color.json",
+      "requiredSemantic": [
+        "color.surface.canvas",
+        "color.surface.subtle",
+        "color.surface.elevated",
+        "color.text.primary",
+        "color.text.secondary",
+        "color.text.muted",
+        "color.text.inverse",
+        "color.border.default",
+        "color.border.strong",
+        "color.action.primary",
+        "color.action.primary-hover",
+        "color.action.primary-text",
+        "color.focus.ring",
+        "color.state.disabled-surface",
+        "color.state.disabled-text"
+      ]
+    },
+    "spacing": {
+      "primitive": "tokens/primitive/space.json",
+      "semantic": "tokens/semantic/space.json",
+      "requiredSemantic": [
+        "space.control.inline-sm",
+        "space.control.inline-md",
+        "space.control.inline-lg",
+        "space.control.block-sm",
+        "space.control.block-md",
+        "space.control.block-lg",
+        "space.layout.gap-sm",
+        "space.layout.gap-md",
+        "space.layout.gap-lg",
+        "space.layout.section-sm",
+        "space.layout.section-md",
+        "space.layout.section-lg"
+      ]
+    },
+    "typography": {
+      "primitive": "tokens/primitive/typography.json",
+      "semantic": "tokens/semantic/typography.json",
+      "requiredSemantic": [
+        "font.body.family",
+        "font.body.size",
+        "font.body.line-height",
+        "font.body.weight",
+        "font.heading.family",
+        "font.heading.weight",
+        "font.heading.line-height",
+        "font.heading.tracking",
+        "font.code.family",
+        "font.code.size",
+        "font.code.line-height"
+      ]
+    }
+  }
+}
