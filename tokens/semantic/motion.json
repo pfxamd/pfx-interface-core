@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "motion": {
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "{motion.duration-scale.fast}"
+      },
+      "default": {
+        "$type": "duration",
+        "$value": "{motion.duration-scale.normal}"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "{motion.duration-scale.slow}"
+      }
+    },
+    "easing": {
+      "standard": {
+        "$type": "cubicBezier",
+        "$value": "{motion.easing-curve.standard}"
+      },
+      "enter": {
+        "$type": "cubicBezier",
+        "$value": "{motion.easing-curve.enter}"
+      },
+      "exit": {
+        "$type": "cubicBezier",
+        "$value": "{motion.easing-curve.exit}"
+      }
+    }
+  }
+}

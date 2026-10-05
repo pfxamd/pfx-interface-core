@@ -11,6 +11,8 @@ Token data / config / schemas
           ↓
        validator
           ↓
+   modes (optional)
+          ↓
        resolver
           ↓
        compiler
@@ -20,7 +22,7 @@ Token data / config / schemas
  projects / AI agents
 ```
 
-Foundations are now active as a data layer (`config/pfx-foundations.v0.1.json` + token sources), not as a framework/component package. Contracts remain deferred until repeated real-project use passes the promotion gate.
+Foundations are active as a data layer (`config/pfx-foundations.v0.1.json` + token sources). Modes are an optional pre-resolution composition layer driven by `config/pfx-modes.v0.1.json`. Neither is a framework/component package. Contracts remain deferred until repeated real-project use passes the promotion gate.
 
 ## Repository layers
 
@@ -29,19 +31,21 @@ Foundations are now active as a data layer (`config/pfx-foundations.v0.1.json` +
 3. `tokens/` — DTCG-aligned source tokens. Never generated CSS.
 4. `src/core/` — shared token types, traversal, strict document merging, and low-level helpers.
 5. `src/validator/` — structural validation plus value/type validation rules.
-6. `src/resolver/` — group extension, alias/reference resolution, type resolution, missing-reference checks, type compatibility, and cycle detection.
-7. `src/compiler/` — output generation boundary and future vendor adapters.
-8. `src/index.ts` — stable consumer facade.
-9. `tests/` — executable behavior, DTCG compatibility, and architecture checks.
-10. `examples/` — executable proofs, never source of truth.
-11. `docs/` — human explanation; executable/schema contracts outrank prose when they conflict.
+6. `src/modes/` — deterministic mode planning and safe semantic-token override composition.
+7. `src/resolver/` — group extension, alias/reference resolution, type resolution, missing-reference checks, type compatibility, and cycle detection.
+8. `src/compiler/` — output generation boundary and future vendor adapters.
+9. `src/index.ts` — stable consumer facade.
+10. `tests/` — executable behavior, DTCG compatibility, and architecture checks.
+11. `examples/` — executable proofs, never source of truth.
+12. `docs/` — human explanation; executable/schema contracts outrank prose when they conflict.
 
 ## Dependency rules
 
 - Token source files never depend on code.
 - `core` has no dependency on validator, resolver, compiler, the public API, or vendors.
 - `validator` may depend on `core` only.
-- `resolver` may depend on `core` and validator rules, never on compiler or vendors.
+- `modes` may depend on `core` and validator only; it composes documents before reference resolution.
+- `resolver` may depend on `core` and validator rules, never on modes, compiler, or vendors.
 - `compiler` may depend on core, validator, and resolver.
 - `src/index.ts` may compose public capabilities but must not contain domain logic.
 - Vendor tooling belongs only behind `src/compiler/`.

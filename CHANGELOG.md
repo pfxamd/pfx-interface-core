@@ -4,6 +4,14 @@ All notable changes to PFx Interface Core are recorded here.
 
 ## Unreleased
 
+PFx Modes v0.1:
+
+- Added independent `colorScheme`, `contrast`, `density`, and `motion` axes with deterministic composition order.
+- Added dark color mapping, scheme-independent high contrast, compact/comfortable density, and reduced/none motion deltas.
+- Added executable mode planning and safe token override composition that cannot create unknown semantic tokens or change token types.
+- Promoted motion primitives and semantic motion roles into PFx Foundations.
+- Added cross-axis mode regression coverage and a composed-mode example output.
+
 PFx Foundations v0.1:
 
 - Activated machine-readable foundation profile for color, spacing, and typography.

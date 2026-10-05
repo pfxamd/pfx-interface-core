@@ -6,7 +6,7 @@ It is not a UI kit and does not impose a visual identity. It defines reusable to
 
 ## Status
 
-Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`). Not yet a stable release and not yet claiming complete DTCG conformance.
+Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`, `motion`) and composable PFx Modes v0.1. Not yet a stable release and not yet claiming complete DTCG conformance.
 
 ## Core flow
 
@@ -14,6 +14,8 @@ Hardened bootstrap with PFx Foundations v0.1 (`color`, `spacing`, `typography`).
 DTCG token sources
       ↓
 validation
+      ↓
+mode composition
       ↓
 reference resolution
       ↓
@@ -41,7 +43,7 @@ docs/       human standards and governance
 
 ## AI workflow
 
-Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`. Foundation consumers should then read `config/pfx-foundations.v0.1.json`.
+Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`. Foundation consumers should then read `config/pfx-foundations.v0.1.json`; contextual/theme work should also read `config/pfx-modes.v0.1.json`.
 
 ## Naming
 

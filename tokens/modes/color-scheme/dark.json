@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "color": {
+    "surface": {
+      "canvas": {
+        "$value": "{color.palette.neutral.950}"
+      },
+      "subtle": {
+        "$value": "{color.palette.neutral.900}"
+      },
+      "elevated": {
+        "$value": "{color.palette.neutral.900}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{color.palette.neutral.0}"
+      },
+      "secondary": {
+        "$value": "{color.palette.neutral.200}"
+      },
+      "muted": {
+        "$value": "{color.palette.neutral.400}"
+      },
+      "inverse": {
+        "$value": "{color.palette.neutral.950}"
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "{color.palette.neutral.700}"
+      },
+      "strong": {
+        "$value": "{color.palette.neutral.500}"
+      }
+    },
+    "action": {
+      "primary": {
+        "$value": "{color.palette.neutral.0}"
+      },
+      "primary-hover": {
+        "$value": "{color.palette.neutral.200}"
+      },
+      "primary-text": {
+        "$value": "{color.palette.neutral.950}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$value": "{color.palette.neutral.0}"
+      }
+    },
+    "state": {
+      "disabled-surface": {
+        "$value": "{color.palette.neutral.800}"
+      },
+      "disabled-text": {
+        "$value": "{color.palette.neutral.500}"
+      }
+    }
+  }
+}

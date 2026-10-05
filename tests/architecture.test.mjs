@@ -32,16 +32,17 @@ test('manifest source-of-truth paths exist', async () => {
 });
 
 test('core remains dependency-free from upper modules and vendor tooling', async () => {
-  await assertNoImports('core', ['/validator/', '/resolver/', '/compiler/', 'style-dictionary']);
+  await assertNoImports('core', ['/validator/', '/modes/', '/resolver/', '/compiler/', 'style-dictionary']);
 });
 
-test('validator and resolver remain independent from compiler and vendors', async () => {
-  await assertNoImports('validator', ['/compiler/', 'style-dictionary']);
-  await assertNoImports('resolver', ['/compiler/', 'style-dictionary']);
+test('validator, modes and resolver preserve one-way dependency boundaries', async () => {
+  await assertNoImports('validator', ['/modes/', '/resolver/', '/compiler/', 'style-dictionary']);
+  await assertNoImports('modes', ['/resolver/', '/compiler/', 'style-dictionary']);
+  await assertNoImports('resolver', ['/modes/', '/compiler/', 'style-dictionary']);
 });
 
 test('vendor tooling is isolated to compiler', async () => {
-  for (const moduleName of ['core', 'validator', 'resolver']) {
+  for (const moduleName of ['core', 'validator', 'modes', 'resolver']) {
     await assertNoImports(moduleName, ['style-dictionary']);
   }
   const publicApi = await readFile(resolve(root, 'src/index.ts'), 'utf8');
@@ -74,17 +75,27 @@ test('all committed machine JSON files parse successfully', async () => {
   const files = [
     'config/pfx-interface.default.json',
     'config/pfx-foundations.v0.1.json',
+    'config/pfx-modes.v0.1.json',
     'pfx-interface.manifest.json',
     'schema/interface-config.schema.json',
     'schema/foundations.schema.json',
+    'schema/modes.schema.json',
     'schema/interface-manifest.schema.json',
     'schema/token-file.schema.json',
     'tokens/primitive/color.json',
     'tokens/primitive/space.json',
     'tokens/primitive/typography.json',
+    'tokens/primitive/motion.json',
     'tokens/semantic/color.json',
     'tokens/semantic/space.json',
     'tokens/semantic/typography.json',
+    'tokens/semantic/motion.json',
+    'tokens/modes/color-scheme/dark.json',
+    'tokens/modes/contrast/high.json',
+    'tokens/modes/density/compact.json',
+    'tokens/modes/density/comfortable.json',
+    'tokens/modes/motion/reduced.json',
+    'tokens/modes/motion/none.json',
   ];
   for (const file of files) {
     const content = await readFile(resolve(root, file), 'utf8');

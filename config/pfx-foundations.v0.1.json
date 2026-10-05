@@ -64,6 +64,18 @@
         "font.code.size",
         "font.code.line-height"
       ]
+    },
+    "motion": {
+      "primitive": "tokens/primitive/motion.json",
+      "semantic": "tokens/semantic/motion.json",
+      "requiredSemantic": [
+        "motion.duration.fast",
+        "motion.duration.default",
+        "motion.duration.slow",
+        "motion.easing.standard",
+        "motion.easing.enter",
+        "motion.easing.exit"
+      ]
     }
   }
 }

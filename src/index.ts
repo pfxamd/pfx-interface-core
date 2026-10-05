@@ -29,3 +29,13 @@ export {
   type CompilerProvider,
   type CssCompileOptions,
 } from './compiler/index.js';
+
+export {
+  applyTokenOverrides,
+  resolveModePlan,
+  type ModeAxisDefinition,
+  type ModeOptionDefinition,
+  type ModePlan,
+  type ModeProfile,
+  type ModeSelection,
+} from './modes/index.js';

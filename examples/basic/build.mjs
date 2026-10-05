@@ -1,7 +1,13 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { compileCss, mergeDocuments, validateDocument } from '../../dist/src/index.js';
+import {
+  applyTokenOverrides,
+  compileCss,
+  mergeDocuments,
+  resolveModePlan,
+  validateDocument,
+} from '../../dist/src/index.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '../..');
@@ -10,14 +16,10 @@ async function readJson(relativePath) {
   return JSON.parse(await readFile(resolve(root, relativePath), 'utf8'));
 }
 
-const documents = await Promise.all([
-  readJson('tokens/primitive/color.json'),
-  readJson('tokens/primitive/space.json'),
-  readJson('tokens/semantic/color.json'),
-  readJson('tokens/semantic/space.json'),
-  readJson('tokens/primitive/typography.json'),
-  readJson('tokens/semantic/typography.json'),
-]);
+const foundationProfile = await readJson('config/pfx-foundations.v0.1.json');
+const foundationPaths = Object.values(foundationProfile.families)
+  .flatMap((family) => [family.primitive, family.semantic]);
+const documents = await Promise.all(foundationPaths.map(readJson));
 
 const merged = mergeDocuments(...documents);
 const validation = validateDocument(merged);
@@ -27,9 +29,25 @@ if (!validation.valid) {
   throw new Error(`Token validation failed:\n${details}`);
 }
 
-const css = compileCss(merged);
-const outputPath = resolve(root, 'examples/basic/generated/tokens.css');
+const outputDirectory = resolve(root, 'examples/basic/generated');
+await mkdir(outputDirectory, { recursive: true });
 
-await mkdir(dirname(outputPath), { recursive: true });
-await writeFile(outputPath, css, 'utf8');
-console.log(`Generated ${outputPath}`);
+await writeFile(resolve(outputDirectory, 'tokens.css'), compileCss(merged), 'utf8');
+
+const modeProfile = await readJson('config/pfx-modes.v0.1.json');
+const plan = resolveModePlan(modeProfile, {
+  colorScheme: 'dark',
+  contrast: 'high',
+  density: 'compact',
+  motion: 'reduced',
+});
+const modeDocuments = await Promise.all(plan.files.map(readJson));
+const composed = applyTokenOverrides(merged, ...modeDocuments);
+
+await writeFile(
+  resolve(outputDirectory, 'tokens.dark-high-compact-reduced.css'),
+  compileCss(composed),
+  'utf8',
+);
+
+console.log(`Generated ${outputDirectory}`);

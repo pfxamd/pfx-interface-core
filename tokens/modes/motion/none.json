@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "motion": {
+    "duration": {
+      "fast": {
+        "$value": "{motion.duration-scale.instant}"
+      },
+      "default": {
+        "$value": "{motion.duration-scale.instant}"
+      },
+      "slow": {
+        "$value": "{motion.duration-scale.instant}"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "../schema/modes.schema.json",
+  "version": "0.1.0",
+  "status": "active",
+  "order": [
+    "colorScheme",
+    "contrast",
+    "density",
+    "motion"
+  ],
+  "axes": {
+    "colorScheme": {
+      "default": "light",
+      "options": {
+        "light": {},
+        "dark": {
+          "file": "tokens/modes/color-scheme/dark.json"
+        }
+      }
+    },
+    "contrast": {
+      "default": "normal",
+      "options": {
+        "normal": {},
+        "high": {
+          "file": "tokens/modes/contrast/high.json"
+        }
+      }
+    },
+    "density": {
+      "default": "default",
+      "options": {
+        "default": {},
+        "compact": {
+          "file": "tokens/modes/density/compact.json"
+        },
+        "comfortable": {
+          "file": "tokens/modes/density/comfortable.json"
+        }
+      }
+    },
+    "motion": {
+      "default": "full",
+      "options": {
+        "full": {},
+        "reduced": {
+          "file": "tokens/modes/motion/reduced.json"
+        },
+        "none": {
+          "file": "tokens/modes/motion/none.json"
+        }
+      }
+    }
+  }
+}

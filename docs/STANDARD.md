@@ -97,14 +97,16 @@ The reference compiler is intentionally not the final production transformation 
 
 ## Modes and themes
 
-Modes remain independent axes rather than combinatorial theme files:
+Modes are independent axes rather than combinatorial theme files:
 
 - color scheme
 - contrast
 - density
 - motion
 
-The detailed mode resolver is intentionally deferred until the base token pipeline is proven across real projects.
+The machine source of truth is `config/pfx-modes.v0.1.json`. Default choices carry no override file; non-default choices provide delta token documents. `resolveModePlan()` determines deterministic application order and `applyTokenOverrides()` applies only type-compatible replacements to existing tokens.
+
+The core must not create files such as `dark-high-contrast-compact.json`. Cross-axis behavior is expressed through semantic aliases whenever possible.
 
 ## Promotion rule
 

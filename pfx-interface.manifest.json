@@ -13,7 +13,8 @@
     "governance": "docs/GOVERNANCE.md",
     "tokens": "tokens/",
     "schemas": "schema/",
-    "foundations": "config/pfx-foundations.v0.1.json"
+    "foundations": "config/pfx-foundations.v0.1.json",
+    "modes": "config/pfx-modes.v0.1.json"
   },
   "namingSystem": {
     "repository": "pfxamd/pfx-naming-system",

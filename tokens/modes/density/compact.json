@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "space": {
+    "control": {
+      "inline-sm": {
+        "$value": "{space.2}"
+      },
+      "inline-md": {
+        "$value": "{space.3}"
+      },
+      "inline-lg": {
+        "$value": "{space.4}"
+      },
+      "block-sm": {
+        "$value": "{space.1}"
+      },
+      "block-md": {
+        "$value": "{space.2}"
+      },
+      "block-lg": {
+        "$value": "{space.3}"
+      }
+    },
+    "layout": {
+      "gap-sm": {
+        "$value": "{space.3}"
+      },
+      "gap-md": {
+        "$value": "{space.4}"
+      },
+      "gap-lg": {
+        "$value": "{space.6}"
+      }
+    }
+  }
+}

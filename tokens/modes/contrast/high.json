@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/token-file.schema.json",
+  "color": {
+    "text": {
+      "secondary": {
+        "$value": "{color.text.primary}"
+      },
+      "muted": {
+        "$value": "{color.text.primary}"
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "{color.text.primary}"
+      },
+      "strong": {
+        "$value": "{color.text.primary}"
+      }
+    },
+    "focus": {
+      "ring": {
+        "$value": "{color.text.primary}"
+      }
+    },
+    "state": {
+      "disabled-text": {
+        "$value": "{color.text.secondary}"
+      }
+    }
+  }
+}

@@ -25,6 +25,10 @@ The primitive spacing scale is intentionally compact and predictable. Semantic r
 
 Typography uses system font stacks only. No external font is required by the core. Primitive families, weights, sizes, line heights, and tracking values feed semantic `body`, `heading`, and `code` roles.
 
+### Motion
+
+Motion foundations define reusable duration and easing primitives plus semantic duration/easing roles. Accessibility behavior is selected through the independent `motion` mode axis rather than by changing component code.
+
 ## Consumption rule
 
 Project-facing UI should prefer semantic tokens. Primitive tokens are available for foundation authoring and exceptional cases, not as the default project API.
@@ -41,8 +45,6 @@ project UI
 
 ## What is deliberately deferred
 
-- dark/high-contrast mappings
-- density and motion modes
 - radius, borders, shadows, sizing, and z-index families
 - component/design contracts
 - framework components

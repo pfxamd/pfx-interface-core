@@ -17,7 +17,8 @@
       "resolver",
       "compiler",
       "public-api",
-      "foundations-data"
+      "foundations-data",
+      "modes"
     ],
     "plannedModules": [
       "contracts"
@@ -29,7 +30,8 @@
     ],
     "consumerBoundary": "src/index.ts",
     "vendorBoundary": "src/compiler/",
-    "foundationProfile": "config/pfx-foundations.v0.1.json"
+    "foundationProfile": "config/pfx-foundations.v0.1.json",
+    "modeProfile": "config/pfx-modes.v0.1.json"
   },
   "tokens": {
     "standard": "DTCG-2025.10",
@@ -45,26 +47,6 @@
       "z",
       "layout",
       "component"
-    ]
-  },
-  "modes": {
-    "colorScheme": [
-      "light",
-      "dark"
-    ],
-    "contrast": [
-      "normal",
-      "high"
-    ],
-    "density": [
-      "compact",
-      "default",
-      "comfortable"
-    ],
-    "motion": [
-      "full",
-      "reduced",
-      "none"
     ]
   },
   "naming": {
