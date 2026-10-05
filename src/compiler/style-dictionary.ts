@@ -1,5 +1,11 @@
 import StyleDictionary from 'style-dictionary';
-import { formats, transformGroups } from 'style-dictionary/enums';
+import {
+  formats,
+  logVerbosityLevels,
+  logWarningLevels,
+  transformGroups,
+  transformTypes,
+} from 'style-dictionary/enums';
 import type { DesignTokens } from 'style-dictionary/types';
 
 import {
@@ -90,10 +96,40 @@ export async function compileCssWithStyleDictionary(
   const styleDictionary = new StyleDictionary({
     tokens: snapshot as unknown as DesignTokens,
     usesDtcg: true,
+    hooks: {
+      transforms: {
+        'pfx/duration/css': {
+          type: transformTypes.value,
+          filter: (token) => {
+            const candidate = token as unknown as { $type?: string; type?: string };
+            return (candidate.$type ?? candidate.type) === 'duration';
+          },
+          transform: (token) => {
+            const candidate = token as unknown as { $value?: unknown; value?: unknown };
+            const value = candidate.$value ?? candidate.value;
+            if (!isRecord(value) || typeof value.value !== 'number' || typeof value.unit !== 'string') {
+              throw new Error('PFx duration transform received an invalid resolved duration value.');
+            }
+            return `${value.value}${value.unit}`;
+          },
+        },
+        'pfx/name/kebab': {
+          type: transformTypes.name,
+          transform: (token) => {
+            const path = token.path.filter((segment) => segment !== '$root');
+            return ['pfx', ...path].join('-');
+          },
+        },
+      },
+    },
+    log: {
+      verbosity: logVerbosityLevels.silent,
+      warnings: logWarningLevels.error,
+    },
     platforms: {
       css: {
         transformGroup: transformGroups.css,
-        prefix: 'pfx',
+        transforms: ['pfx/duration/css', 'pfx/name/kebab'],
         files: [
           {
             format: formats.cssVariables,
