@@ -22,11 +22,11 @@ Token data / config / schemas
  projects / AI agents
 ```
 
-Foundations are active as a data layer (`config/pfx-foundations.v0.1.json` + token sources). Modes are an optional pre-resolution composition layer driven by `config/pfx-modes.v0.1.json`. Neither is a framework/component package. Contracts remain deferred until repeated real-project use passes the promotion gate.
+Foundations are active as a data layer (`config/pfx-foundations.v0.1.json` + token sources). Accessibility is a parallel machine-policy layer (`config/pfx-accessibility.v0.1.json`) that references foundation tokens and project-level verification duties. Modes are an optional pre-resolution composition layer driven by `config/pfx-modes.v0.1.json`. Neither is a framework/component package. Contracts remain deferred until repeated real-project use passes the promotion gate.
 
 ## Repository layers
 
-1. `config/` — machine policy, supported conformance surface, foundation profiles, and defaults.
+1. `config/` — machine policy, supported conformance surface, foundation/mode/accessibility profiles, and defaults.
 2. `schema/` — machine-readable source contracts.
 3. `tokens/` — DTCG-aligned source tokens. Never generated CSS.
 4. `src/core/` — shared token types, traversal, strict document merging, and low-level helpers.

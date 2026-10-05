@@ -3,6 +3,7 @@ export const tokenCategories = [
   'space',
   'size',
   'radius',
+  'border',
   'font',
   'shadow',
   'motion',

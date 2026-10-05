@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "size": {
+    "icon": {
+      "sm": { "$type": "dimension", "$value": "{size.scale.16}" },
+      "md": { "$type": "dimension", "$value": "{size.scale.20}" },
+      "lg": { "$type": "dimension", "$value": "{size.scale.24}" }
+    },
+    "control": {
+      "sm": { "$type": "dimension", "$value": "{size.scale.32}" },
+      "md": { "$type": "dimension", "$value": "{size.scale.40}" },
+      "lg": { "$type": "dimension", "$value": "{size.scale.48}" }
+    },
+    "target": {
+      "minimum": { "$type": "dimension", "$value": "{size.scale.24}" },
+      "enhanced": { "$type": "dimension", "$value": "{size.scale.44}" }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pfxamd.local/schema/accessibility.schema.json",
+  "type": "object",
+  "required": ["version", "status", "standard", "policies"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["draft", "active", "deprecated"] },
+    "standard": {
+      "type": "object",
+      "required": ["name", "version", "targetLevel", "reference"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "const": "WCAG" },
+        "version": { "const": "2.2" },
+        "targetLevel": { "enum": ["A", "AA", "AAA"] },
+        "reference": { "type": "string", "format": "uri" }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "required": ["focusVisible", "targetSize", "focusNotObscured", "motionPreference", "logicalProperties", "responsive"],
+      "additionalProperties": false,
+      "properties": {
+        "focusVisible": { "type": "object" },
+        "targetSize": { "type": "object" },
+        "focusNotObscured": { "type": "object" },
+        "motionPreference": { "type": "object" },
+        "logicalProperties": { "type": "object" },
+        "responsive": { "type": "object" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

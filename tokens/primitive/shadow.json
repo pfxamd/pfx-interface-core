@@ -1,0 +1,65 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "shadow": {
+    "level": {
+      "none": {
+        "$type": "shadow",
+        "$value": {
+          "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0 },
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 0, "unit": "px" },
+          "blur": { "value": 0, "unit": "px" },
+          "spread": { "value": 0, "unit": "px" }
+        }
+      },
+      "sm": {
+        "$type": "shadow",
+        "$value": {
+          "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0.1 },
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 1, "unit": "px" },
+          "blur": { "value": 3, "unit": "px" },
+          "spread": { "value": 0, "unit": "px" }
+        }
+      },
+      "md": {
+        "$type": "shadow",
+        "$value": [
+          {
+            "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0.1 },
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 4, "unit": "px" },
+            "blur": { "value": 12, "unit": "px" },
+            "spread": { "value": -2, "unit": "px" }
+          },
+          {
+            "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0.06 },
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 2, "unit": "px" },
+            "blur": { "value": 4, "unit": "px" },
+            "spread": { "value": 0, "unit": "px" }
+          }
+        ]
+      },
+      "lg": {
+        "$type": "shadow",
+        "$value": [
+          {
+            "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0.14 },
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 12, "unit": "px" },
+            "blur": { "value": 32, "unit": "px" },
+            "spread": { "value": -6, "unit": "px" }
+          },
+          {
+            "color": { "colorSpace": "oklch", "components": [0.18, 0.01, 265], "alpha": 0.08 },
+            "offsetX": { "value": 0, "unit": "px" },
+            "offsetY": { "value": 4, "unit": "px" },
+            "blur": { "value": 10, "unit": "px" },
+            "spread": { "value": -2, "unit": "px" }
+          }
+        ]
+      }
+    }
+  }
+}

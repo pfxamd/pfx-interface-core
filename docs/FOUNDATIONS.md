@@ -29,6 +29,30 @@ Typography uses system font stacks only. No external font is required by the cor
 
 Motion foundations define reusable duration and easing primitives plus semantic duration/easing roles. Accessibility behavior is selected through the independent `motion` mode axis rather than by changing component code.
 
+### Radius
+
+Radius provides a small shape scale and semantic roles for controls, surfaces, overlays, and pill-shaped elements.
+
+### Border
+
+Border foundations separate width, style, and focus offset from color. Border colors remain semantic color roles, allowing color schemes and contrast modes to remap them independently.
+
+### Shadow
+
+Shadow levels provide neutral elevation primitives and semantic surface/overlay roles. They are visual depth aids, not a substitute for semantic hierarchy or accessible boundaries.
+
+### Sizing
+
+Sizing provides icon/control roles plus accessibility target-size roles. Control dimensions and target-size requirements are intentionally separate.
+
+### Z-index
+
+Z-index uses named layer roles rather than arbitrary project values: base, raised, dropdown, overlay, modal, and toast.
+
+### Layout
+
+Layout provides reusable container measures, minimum grid-column measure, and gutter roles. Breakpoints are intentionally not runtime tokens; Media Queries and Container Queries remain platform/build rules.
+
 ## Consumption rule
 
 Project-facing UI should prefer semantic tokens. Primitive tokens are available for foundation authoring and exceptional cases, not as the default project API.
@@ -45,7 +69,6 @@ project UI
 
 ## What is deliberately deferred
 
-- radius, borders, shadows, sizing, and z-index families
 - component/design contracts
 - framework components
 

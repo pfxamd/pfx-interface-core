@@ -76,6 +76,78 @@
         "motion.easing.enter",
         "motion.easing.exit"
       ]
+    },
+    "radius": {
+      "primitive": "tokens/primitive/radius.json",
+      "semantic": "tokens/semantic/radius.json",
+      "requiredSemantic": [
+        "radius.control.sm",
+        "radius.control.md",
+        "radius.control.lg",
+        "radius.surface.default",
+        "radius.surface.prominent",
+        "radius.overlay.default",
+        "radius.pill"
+      ]
+    },
+    "border": {
+      "primitive": "tokens/primitive/border.json",
+      "semantic": "tokens/semantic/border.json",
+      "requiredSemantic": [
+        "border.width.default",
+        "border.width.strong",
+        "border.width.focus",
+        "border.style.default",
+        "border.focus.offset"
+      ]
+    },
+    "shadow": {
+      "primitive": "tokens/primitive/shadow.json",
+      "semantic": "tokens/semantic/shadow.json",
+      "requiredSemantic": [
+        "shadow.surface.subtle",
+        "shadow.surface.raised",
+        "shadow.overlay.default"
+      ]
+    },
+    "sizing": {
+      "primitive": "tokens/primitive/size.json",
+      "semantic": "tokens/semantic/size.json",
+      "requiredSemantic": [
+        "size.icon.sm",
+        "size.icon.md",
+        "size.icon.lg",
+        "size.control.sm",
+        "size.control.md",
+        "size.control.lg",
+        "size.target.minimum",
+        "size.target.enhanced"
+      ]
+    },
+    "zIndex": {
+      "primitive": "tokens/primitive/z.json",
+      "semantic": "tokens/semantic/z.json",
+      "requiredSemantic": [
+        "z.layer.base",
+        "z.layer.raised",
+        "z.layer.dropdown",
+        "z.layer.overlay",
+        "z.layer.modal",
+        "z.layer.toast"
+      ]
+    },
+    "layout": {
+      "primitive": "tokens/primitive/layout.json",
+      "semantic": "tokens/semantic/layout.json",
+      "requiredSemantic": [
+        "layout.container.readable",
+        "layout.container.content",
+        "layout.container.wide",
+        "layout.grid.min-column",
+        "layout.gutter.sm",
+        "layout.gutter.md",
+        "layout.gutter.lg"
+      ]
     }
   }
 }

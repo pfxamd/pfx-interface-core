@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "border": {
+    "width": {
+      "default": { "$type": "dimension", "$value": "{border.width-scale.thin}" },
+      "strong": { "$type": "dimension", "$value": "{border.width-scale.medium}" },
+      "focus": { "$type": "dimension", "$value": "{border.width-scale.medium}" }
+    },
+    "style": {
+      "default": { "$type": "strokeStyle", "$value": "{border.style-scale.solid}" }
+    },
+    "focus": {
+      "offset": { "$type": "dimension", "$value": "{border.offset-scale.sm}" }
+    }
+  }
+}

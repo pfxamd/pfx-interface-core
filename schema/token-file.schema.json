@@ -20,6 +20,9 @@
     "radius": {
       "$ref": "#/$defs/group"
     },
+    "border": {
+      "$ref": "#/$defs/group"
+    },
     "font": {
       "$ref": "#/$defs/group"
     },

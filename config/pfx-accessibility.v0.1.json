@@ -1,0 +1,57 @@
+{
+  "$schema": "../schema/accessibility.schema.json",
+  "version": "0.1.0",
+  "status": "active",
+  "standard": {
+    "name": "WCAG",
+    "version": "2.2",
+    "targetLevel": "AA",
+    "reference": "https://www.w3.org/TR/WCAG22/"
+  },
+  "policies": {
+    "focusVisible": {
+      "required": true,
+      "colorToken": "color.focus.ring",
+      "thicknessToken": "border.width.focus",
+      "offsetToken": "border.focus.offset",
+      "enhancedGuidance": {
+        "criterion": "2.4.13",
+        "level": "AAA",
+        "minimumPerimeterCssPx": 2,
+        "minimumContrastRatio": 3,
+        "projectVerificationRequired": true
+      }
+    },
+    "targetSize": {
+      "criterion": "2.5.8",
+      "level": "AA",
+      "minimumToken": "size.target.minimum",
+      "minimumCssPx": 24,
+      "exceptionsMustBeEvaluated": true,
+      "enhanced": {
+        "criterion": "2.5.5",
+        "level": "AAA",
+        "token": "size.target.enhanced",
+        "cssPx": 44
+      }
+    },
+    "focusNotObscured": {
+      "criterion": "2.4.11",
+      "level": "AA",
+      "projectVerificationRequired": true
+    },
+    "motionPreference": {
+      "mediaQuery": "(prefers-reduced-motion: reduce)",
+      "modeAxis": "motion",
+      "modeOption": "reduced"
+    },
+    "logicalProperties": {
+      "required": true
+    },
+    "responsive": {
+      "breakpointsAreBuildRules": true,
+      "componentContextPrefersContainerQueries": true,
+      "viewportContextUsesMediaQueries": true
+    }
+  }
+}

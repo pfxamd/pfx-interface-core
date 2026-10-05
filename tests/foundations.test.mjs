@@ -67,16 +67,27 @@ test('the complete foundation graph resolves without missing references or cycle
   const merged = mergeDocuments(...documents);
   assert.equal(validateDocument(merged).valid, true);
   const resolved = resolveDocument(merged);
-  assert.ok(resolved.tokens.length >= 50);
+  assert.ok(resolved.tokens.length >= 100);
 });
 
-test('foundation CSS exposes semantic color, spacing, and typography variables', async () => {
+test('foundation CSS exposes every active foundation family', async () => {
   const documents = await loadFoundationDocuments();
   const css = compileCss(mergeDocuments(...documents));
-  assert.match(css, /--pfx-color-text-primary:/);
-  assert.match(css, /--pfx-space-layout-gap-md:/);
-  assert.match(css, /--pfx-font-body-family:/);
-  assert.match(css, /--pfx-font-heading-weight:/);
+  for (const variable of [
+    '--pfx-color-text-primary:',
+    '--pfx-space-layout-gap-md:',
+    '--pfx-font-body-family:',
+    '--pfx-motion-duration-default:',
+    '--pfx-radius-control-md:',
+    '--pfx-border-width-default:',
+    '--pfx-shadow-surface-raised:',
+    '--pfx-size-control-md:',
+    '--pfx-z-layer-modal:',
+    '--pfx-layout-container-content:',
+  ]) {
+    assert.match(css, new RegExp(variable));
+  }
+  assert.match(css, /--pfx-shadow-overlay-default: .*?, .*?;/);
 });
 
 test('foundation profile keeps contracts deferred', async () => {

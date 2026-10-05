@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "z": {
+    "layer": {
+      "base": { "$type": "number", "$value": "{z.scale.base}" },
+      "raised": { "$type": "number", "$value": "{z.scale.raised}" },
+      "dropdown": { "$type": "number", "$value": "{z.scale.dropdown}" },
+      "overlay": { "$type": "number", "$value": "{z.scale.overlay}" },
+      "modal": { "$type": "number", "$value": "{z.scale.modal}" },
+      "toast": { "$type": "number", "$value": "{z.scale.toast}" }
+    }
+  }
+}

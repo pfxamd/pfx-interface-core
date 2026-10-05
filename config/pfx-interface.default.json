@@ -18,7 +18,8 @@
       "compiler",
       "public-api",
       "foundations-data",
-      "modes"
+      "modes",
+      "accessibility-data"
     ],
     "plannedModules": [
       "contracts"
@@ -31,7 +32,8 @@
     "consumerBoundary": "src/index.ts",
     "vendorBoundary": "src/compiler/",
     "foundationProfile": "config/pfx-foundations.v0.1.json",
-    "modeProfile": "config/pfx-modes.v0.1.json"
+    "modeProfile": "config/pfx-modes.v0.1.json",
+    "accessibilityProfile": "config/pfx-accessibility.v0.1.json"
   },
   "tokens": {
     "standard": "DTCG-2025.10",
@@ -41,6 +43,7 @@
       "space",
       "size",
       "radius",
+      "border",
       "font",
       "shadow",
       "motion",

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "border": {
+    "width-scale": {
+      "none": { "$type": "dimension", "$value": { "value": 0, "unit": "px" } },
+      "thin": { "$type": "dimension", "$value": { "value": 1, "unit": "px" } },
+      "medium": { "$type": "dimension", "$value": { "value": 2, "unit": "px" } },
+      "thick": { "$type": "dimension", "$value": { "value": 3, "unit": "px" } }
+    },
+    "offset-scale": {
+      "none": { "$type": "dimension", "$value": { "value": 0, "unit": "px" } },
+      "sm": { "$type": "dimension", "$value": { "value": 2, "unit": "px" } },
+      "md": { "$type": "dimension", "$value": { "value": 4, "unit": "px" } }
+    },
+    "style-scale": {
+      "solid": { "$type": "strokeStyle", "$value": "solid" },
+      "dashed": { "$type": "strokeStyle", "$value": "dashed" }
+    }
+  }
+}

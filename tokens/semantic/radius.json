@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "radius": {
+    "control": {
+      "sm": { "$type": "dimension", "$value": "{radius.scale.sm}" },
+      "md": { "$type": "dimension", "$value": "{radius.scale.md}" },
+      "lg": { "$type": "dimension", "$value": "{radius.scale.lg}" }
+    },
+    "surface": {
+      "default": { "$type": "dimension", "$value": "{radius.scale.md}" },
+      "prominent": { "$type": "dimension", "$value": "{radius.scale.lg}" }
+    },
+    "overlay": {
+      "default": { "$type": "dimension", "$value": "{radius.scale.lg}" }
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "{radius.scale.full}"
+    }
+  }
+}

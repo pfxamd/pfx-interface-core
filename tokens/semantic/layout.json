@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "layout": {
+    "container": {
+      "readable": { "$type": "dimension", "$value": "{layout.measure-scale.readable}" },
+      "content": { "$type": "dimension", "$value": "{layout.measure-scale.content}" },
+      "wide": { "$type": "dimension", "$value": "{layout.measure-scale.wide}" }
+    },
+    "grid": {
+      "min-column": { "$type": "dimension", "$value": "{layout.measure-scale.column}" }
+    },
+    "gutter": {
+      "sm": { "$type": "dimension", "$value": "{space.4}" },
+      "md": { "$type": "dimension", "$value": "{space.6}" },
+      "lg": { "$type": "dimension", "$value": "{space.8}" }
+    }
+  }
+}

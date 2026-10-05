@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "size": {
+    "scale": {
+      "16": { "$type": "dimension", "$value": { "value": 16, "unit": "px" } },
+      "20": { "$type": "dimension", "$value": { "value": 20, "unit": "px" } },
+      "24": { "$type": "dimension", "$value": { "value": 24, "unit": "px" } },
+      "32": { "$type": "dimension", "$value": { "value": 32, "unit": "px" } },
+      "40": { "$type": "dimension", "$value": { "value": 40, "unit": "px" } },
+      "44": { "$type": "dimension", "$value": { "value": 44, "unit": "px" } },
+      "48": { "$type": "dimension", "$value": { "value": 48, "unit": "px" } },
+      "56": { "$type": "dimension", "$value": { "value": 56, "unit": "px" } }
+    }
+  }
+}

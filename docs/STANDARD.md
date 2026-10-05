@@ -91,7 +91,7 @@ Group `$extends` performs inherited deep merge with local replacement at the sam
 
 Compilation is an output concern, never a token-source concern.
 
-The reference CSS compiler converts supported resolved tokens to PFx custom properties and handles DTCG color spaces with valid CSS Color syntax. Generated CSS must not be edited as source.
+The reference CSS compiler converts supported resolved tokens to PFx custom properties and handles DTCG color spaces, dimensions, durations, font families/weights, cubic Bézier curves, named stroke styles, and shadows. Generated CSS must not be edited as source.
 
 The reference compiler is intentionally not the final production transformation engine. Style Dictionary remains the preferred production adapter behind the PFx compiler boundary.
 
@@ -107,6 +107,12 @@ Modes are independent axes rather than combinatorial theme files:
 The machine source of truth is `config/pfx-modes.v0.1.json`. Default choices carry no override file; non-default choices provide delta token documents. `resolveModePlan()` determines deterministic application order and `applyTokenOverrides()` applies only type-compatible replacements to existing tokens.
 
 The core must not create files such as `dark-high-contrast-compact.json`. Cross-axis behavior is expressed through semantic aliases whenever possible.
+
+## Accessibility foundation
+
+Accessibility policy is machine-readable in `config/pfx-accessibility.v0.1.json`. Foundation tokens provide reusable focus and target-size values, but final WCAG conformance must be verified in the rendered project.
+
+PFx keeps responsive conditions out of runtime tokens: component-local responsive behavior should prefer Container Queries, viewport context may use Media Queries, and CSS Logical Properties should be used from the start.
 
 ## Promotion rule
 

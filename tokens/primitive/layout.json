@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "layout": {
+    "measure-scale": {
+      "readable": { "$type": "dimension", "$value": { "value": 42, "unit": "rem" } },
+      "content": { "$type": "dimension", "$value": { "value": 72, "unit": "rem" } },
+      "wide": { "$type": "dimension", "$value": { "value": 90, "unit": "rem" } },
+      "column": { "$type": "dimension", "$value": { "value": 16, "unit": "rem" } }
+    }
+  }
+}

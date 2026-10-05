@@ -107,8 +107,52 @@ function serializeFontFamily(value: unknown): string {
   if (!Array.isArray(families) || !families.every((item) => typeof item === 'string')) {
     throw new Error('Invalid fontFamily value.');
   }
-  const genericFamilies = new Set(['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'math', 'fangsong']);
+  const genericFamilies = new Set([
+    'serif',
+    'sans-serif',
+    'monospace',
+    'cursive',
+    'fantasy',
+    'system-ui',
+    'ui-serif',
+    'ui-sans-serif',
+    'ui-monospace',
+    'ui-rounded',
+    'math',
+    'fangsong',
+  ]);
   return families.map((family) => genericFamilies.has(family) ? family : JSON.stringify(family)).join(', ');
+}
+
+function serializeStrokeStyle(value: unknown): string {
+  if (typeof value !== 'string') {
+    throw new Error('Reference compiler currently supports named strokeStyle values only.');
+  }
+  return value;
+}
+
+function serializeShadowLayer(value: unknown): string {
+  if (!isRecord(value)) throw new Error('Shadow layer must resolve to an object.');
+  const required = ['offsetX', 'offsetY', 'blur', 'spread', 'color'] as const;
+  for (const key of required) {
+    if (!(key in value)) throw new Error(`Shadow layer is missing ${key}.`);
+  }
+
+  return [
+    serializeDimension(value.offsetX),
+    serializeDimension(value.offsetY),
+    serializeDimension(value.blur),
+    serializeDimension(value.spread),
+    serializeColor(value.color),
+  ].join(' ');
+}
+
+function serializeShadow(value: unknown): string {
+  if (Array.isArray(value)) {
+    if (value.length === 0) throw new Error('Shadow token must contain at least one layer.');
+    return value.map(serializeShadowLayer).join(', ');
+  }
+  return serializeShadowLayer(value);
 }
 
 function serializeToken(token: ResolvedToken): string {
@@ -125,6 +169,10 @@ function serializeToken(token: ResolvedToken): string {
       return String(token.resolvedValue);
     case 'fontFamily':
       return serializeFontFamily(token.resolvedValue);
+    case 'strokeStyle':
+      return serializeStrokeStyle(token.resolvedValue);
+    case 'shadow':
+      return serializeShadow(token.resolvedValue);
     case 'cubicBezier': {
       if (!Array.isArray(token.resolvedValue) || token.resolvedValue.length !== 4 || token.resolvedValue.some((item) => typeof item !== 'number')) {
         throw new Error('Invalid resolved cubicBezier value.');

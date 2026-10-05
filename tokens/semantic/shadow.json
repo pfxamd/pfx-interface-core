@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/token-file.schema.json",
+  "shadow": {
+    "surface": {
+      "subtle": { "$type": "shadow", "$value": "{shadow.level.sm}" },
+      "raised": { "$type": "shadow", "$value": "{shadow.level.md}" }
+    },
+    "overlay": {
+      "default": { "$type": "shadow", "$value": "{shadow.level.lg}" }
+    }
+  }
+}

@@ -4,6 +4,14 @@ All notable changes to PFx Interface Core are recorded here.
 
 ## Unreleased
 
+Foundation completion + Accessibility v0.1:
+
+- Added radius, border, shadow, sizing, z-index, and layout foundations with semantic aliases.
+- Added CSS serialization for named stroke styles and single/multi-layer shadow tokens.
+- Added WCAG 2.2-oriented machine policy for focus visibility, target sizing, reduced-motion mapping, focus-not-obscured verification, logical properties, and responsive strategy.
+- Added 24px minimum and 44px enhanced target-size roles plus a 2px focus baseline without claiming token-only conformance.
+- Added foundation and accessibility regression coverage.
+
 PFx Modes v0.1:
 
 - Added independent `colorScheme`, `contrast`, `density`, and `motion` axes with deterministic composition order.
