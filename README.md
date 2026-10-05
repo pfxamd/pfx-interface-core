@@ -1,0 +1,59 @@
+# PFx Interface Core
+
+PFx Interface Core is an AI-first, machine-readable interface foundation for projects built with ChatGPT, Codex, or by hand.
+
+It is not a UI kit and does not impose a visual identity. It defines reusable token rules, validation, resolution, compilation boundaries, and stable machine-readable guidance.
+
+## Status
+
+Bootstrap architecture / prototype. Not yet a stable release.
+
+## Core flow
+
+```text
+DTCG token sources
+      ↓
+validation
+      ↓
+reference resolution
+      ↓
+compiler boundary
+      ↓
+CSS / machine outputs
+```
+
+## Structure
+
+```text
+config/     machine policy
+schema/     machine contracts
+tokens/     source tokens
+src/        executable core modules
+tests/      behavior + architecture checks
+examples/   executable proofs
+docs/       human standards and governance
+```
+
+## AI workflow
+
+Start with `AI-ENTRYPOINT.md` and `pfx-interface.manifest.json`.
+
+## Naming
+
+PFx Interface Core follows the canonical `pfxamd/pfx-naming-system` policy. PFx signatures are used only for genuinely PFx-owned shared architecture. Ordinary semantic code stays naturally named.
+
+## Setup
+
+```bash
+npm install
+npm run check
+```
+
+`npm run check` cleans generated output, builds the TypeScript core, runs all tests, executes the reference pipeline, and cleans generated output again.
+
+## Repository policy
+
+- Private, unpublished package (`private: true`, `UNLICENSED`).
+- `main` is protected by the same verification command used locally through GitHub Actions.
+- Generated `dist/` and example output are never source files.
+- The bootstrap intentionally has no GUI and no framework dependency.
