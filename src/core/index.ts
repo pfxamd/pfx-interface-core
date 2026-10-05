@@ -186,7 +186,32 @@ export function mergeDocuments(...documents: TokenDocument[]): TokenDocument {
       const nextPath = [...path, key];
       const location = pathToName(nextPath) || '$';
 
-      if (key.startsWith('$')) {
+      if (key === '$schema' && path.length === 0) {
+        // $schema identifies each source file. A composed in-memory document can
+        // keep the first schema hint even when source files use different
+        // relative paths to the same schema.
+        continue;
+      }
+
+      if (key.startsWith('
+
+      if (!isRecord(current) || !isRecord(value)) {
+        throw new Error(`Conflicting token document nodes at ${location}`);
+      }
+
+      if (isTokenDefinition(current) || isTokenDefinition(value)) {
+        throw new Error(`Duplicate or incompatible token definition at ${location}`);
+      }
+
+      output[key] = merge(current, value, nextPath);
+    }
+
+    return output;
+  };
+
+  return documents.reduce<TokenDocument>((acc, document) => merge(acc, document, []), {});
+}
+)) {
         if (!sameValue(current, value)) {
           throw new Error(`Conflicting metadata while merging token documents at ${location}`);
         }

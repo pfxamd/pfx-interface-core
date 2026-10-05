@@ -52,3 +52,30 @@ test('generated CSS custom properties follow the PFx shared-token naming grammar
   assert.ok(names.length > 0);
   for (const name of names) assert.match(name, pattern);
 });
+
+
+test('mergeDocuments treats root $schema as source-file metadata', () => {
+  const left = {
+    $schema: '../schema/token-file.schema.json',
+    color: {
+      base: {
+        $type: 'color',
+        $value: { colorSpace: 'srgb', components: [1, 0, 0] },
+      },
+    },
+  };
+  const right = {
+    $schema: '../../schema/token-file.schema.json',
+    space: {
+      base: {
+        $type: 'dimension',
+        $value: { value: 8, unit: 'px' },
+      },
+    },
+  };
+
+  const merged = mergeDocuments(left, right);
+  assert.equal(merged.$schema, '../schema/token-file.schema.json');
+  assert.ok(merged.color);
+  assert.ok(merged.space);
+});
