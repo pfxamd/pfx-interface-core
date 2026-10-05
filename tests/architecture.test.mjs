@@ -47,6 +47,17 @@ test('vendor tooling is isolated to compiler', async () => {
   }
   const publicApi = await readFile(resolve(root, 'src/index.ts'), 'utf8');
   assert.equal(publicApi.includes('style-dictionary'), false);
+
+  const compilerFiles = await sourceFiles('compiler');
+  const vendorImports = [];
+  for (const file of compilerFiles) {
+    const source = await readFile(file, 'utf8');
+    if (source.includes("from 'style-dictionary'") || source.includes("from 'style-dictionary/enums'")) {
+      vendorImports.push(file);
+    }
+  }
+  assert.equal(vendorImports.length, 1);
+  assert.match(vendorImports[0], /style-dictionary\.ts$/);
 });
 
 test('bootstrap contains no speculative runtime foundation, contract, GUI, or workspace layer', async () => {

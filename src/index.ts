@@ -25,7 +25,10 @@ export {
 } from './resolver/index.js';
 export {
   compileCss,
+  compileCssWithStyleDictionary,
+  createStyleDictionarySnapshot,
   referenceCompiler,
+  styleDictionaryCompiler,
   type CompilerProvider,
   type CssCompileOptions,
 } from './compiler/index.js';

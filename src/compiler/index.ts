@@ -214,3 +214,10 @@ export const referenceCompiler: CompilerProvider = {
 export function compileCss(document: TokenDocument, options?: CssCompileOptions): string {
   return referenceCompiler.compileCss(document, options);
 }
+
+
+export {
+  compileCssWithStyleDictionary,
+  createStyleDictionarySnapshot,
+  styleDictionaryCompiler,
+} from './style-dictionary.js';
