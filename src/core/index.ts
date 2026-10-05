@@ -173,7 +173,11 @@ function sameValue(left: unknown, right: unknown): boolean {
 }
 
 export function mergeDocuments(...documents: TokenDocument[]): TokenDocument {
-  const merge = (left: Record<string, unknown>, right: Record<string, unknown>, path: string[]): Record<string, unknown> => {
+  const merge = (
+    left: Record<string, unknown>,
+    right: Record<string, unknown>,
+    path: string[],
+  ): Record<string, unknown> => {
     const output: Record<string, unknown> = { ...left };
 
     for (const [key, value] of Object.entries(right)) {
@@ -187,31 +191,13 @@ export function mergeDocuments(...documents: TokenDocument[]): TokenDocument {
       const location = pathToName(nextPath) || '$';
 
       if (key === '$schema' && path.length === 0) {
-        // $schema identifies each source file. A composed in-memory document can
-        // keep the first schema hint even when source files use different
-        // relative paths to the same schema.
+        // $schema identifies an individual source file. The composed in-memory
+        // document keeps the first schema hint even when source files reference
+        // that schema through different relative paths.
         continue;
       }
 
-      if (key.startsWith('
-
-      if (!isRecord(current) || !isRecord(value)) {
-        throw new Error(`Conflicting token document nodes at ${location}`);
-      }
-
-      if (isTokenDefinition(current) || isTokenDefinition(value)) {
-        throw new Error(`Duplicate or incompatible token definition at ${location}`);
-      }
-
-      output[key] = merge(current, value, nextPath);
-    }
-
-    return output;
-  };
-
-  return documents.reduce<TokenDocument>((acc, document) => merge(acc, document, []), {});
-}
-)) {
+      if (key.startsWith('$')) {
         if (!sameValue(current, value)) {
           throw new Error(`Conflicting metadata while merging token documents at ${location}`);
         }
